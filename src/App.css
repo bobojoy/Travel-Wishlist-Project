@@ -1,15 +1,11 @@
-
-
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-
 form {
-  background-color: rgb(201, 220, 221); ;
+  background-color: rgb(201, 220, 221);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -61,7 +57,6 @@ button:hover {
   background-color: hotpink;
 }
 
-
 .error {
   color: #ef4444;
   font-size: 0.875rem;
@@ -73,7 +68,6 @@ button:hover {
   font-size: 0.875rem;
   margin-top: 10px;
 }
-
 
 ul {
   list-style: none;
@@ -115,4 +109,71 @@ li button {
 
 li button:hover {
   background-color: indigo;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  max-width: 300px;
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin-top: 12px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 1rem;
+}
+.listcard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.text-center {
+  text-align: center;
+}
+.navbar {
+  background-color: rgb(165, 203, 227);
+  display: flex;
+  padding: 5px;
+}
+.NAV {
+  border-radius: 10px;
+
+  color: rgb(8, 7, 7);
+  font-size: larger;
+  font-style: italic;
+  font-weight: 800;
+  padding-left: 300px;
+  display: flex;
+}
+
+.nav {
+  padding: 10px;
+  display: flex;
+}
+/* .NAV:hover{
+  background-color: blue;
+} */
+.img1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }

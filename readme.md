@@ -1,3 +1,4 @@
+
 # Travel Destinations API
 
 ## Overview
@@ -38,3 +39,4 @@ To run the json server, type the following command in the terminal:
 
 ```bash
 json-server --watch db.json
+

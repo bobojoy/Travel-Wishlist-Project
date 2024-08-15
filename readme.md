@@ -1,4 +1,4 @@
-# TRAVEL WISHLIST PROJECT 
+# TRAVEL WISHLIST PROJECT.
 ## Description
 
 Welcome to the Travel Wishlist Frontend! This is a web application designed to help users curate and manage their travel aspirations. Whether you dream of exploring ancient ruins, relaxing on exotic beaches, or experiencing vibrant cities, this app allows you to create and organize your travel wishlist with ease.

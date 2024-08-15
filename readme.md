@@ -1,4 +1,4 @@
-# Travel Destinations API
+# Travel Destinations API.
 
 
 ## Overview

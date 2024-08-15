@@ -1,42 +1,102 @@
+# TRAVEL WISHLIST PROJECT.
+## Description
 
-# Travel Destinations API
+Welcome to the Travel Wishlist Frontend! This is a web application designed to help users curate and manage their travel aspirations. Whether you dream of exploring ancient ruins, relaxing on exotic beaches, or experiencing vibrant cities, this app allows you to create and organize your travel wishlist with ease.
 
-## Overview
+## Requirements
 
-This project provides a RESTful API to access a collection of travel destinations. The data is served from a local JSON file (db.json) and includes various destinations around the world with details such as name, country, notes, and image URLs.
+You will only need to install Node.js on your environment
 
-## API Endpoints
 
-### *GET /destinations*
-Fetches the list of all travel destinations.
+## Installation
 
-### *POST /destinations*
-Adds a new destination to the database.
+### **Node installation**
+ 
+ ### *Node installation on Linux*
 
-### *DELETE /destinations/:id*
-Deletes a destination from the database by ID.
+1. sudo apt-get install python-software-properties.
 
-### *Data Model*
+2. sudo add-apt-repository ppa:chris-lea/node.js.
 
-- *id*: Unique identifier for the destination.
-- *name*: Name of the destination.
-- *country*: Country where the destination is located.
-- *notes*: Additional information about the destination.
-- *imageUrl*: URL of an image representing the destination.
+3. sudo apt-get update.
 
-## Setup
+4. sudo apt-get install nodejs.
 
-### Prerequisites
+### Node installation on windows
+Click on [official Node.js website](http://nodejs.org/)
+Git should also be availabe in your PATH 
 
-1. A reliable laptop or computer with at least 8GB RAM, core i5, 500GB HDD, and stable internet access.
-2. A web browser capable of running JavaScript, such as Chrome.
-3. An Operating System, preferably Linux or Windows 10+.
-4. A text editor capable of running JavaScript, such as Visual Studio Code or Sublime Text.
+After installing Node and npm, you should be able to run the following commands 
 
-### Running
+ - $node --version
 
-To run the json server, type the following command in the terminal:
+- $npm --version
 
-```bash
-json-server --watch db.json
+### Install Tailwind css.
+To install tailwind run the following commands 
+  
+    $npm install tailwindcss
+             or 
+    $npm install tailwindcss
+
+### Set Up Tailwind
+To set up tailwind run   :
+
+  ` npx tailwindcss init`
+
+#### Include Tailwind to css
+
+Add the following lines to your css file
+    
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+Import the css file into your main Javascript file 
+
+## Languages 
+
+### React
+For building the user interface.
+
+### css 
+For styling web pages
+
+## Frameworks Used 
+ 
+###  Tailwind CSS
+For utility-first CSS styling.
+
+### Contributers
+1. Allan
+
+[https://github.com/A-maina]
+
+2. Joy
+
+[https://github.com/bobojoy]
+
+3. Charles
+
+[https://github.com/Gift-World]
+
+4. Junne
+
+[https://github.com/Junnita]
+
+
+5. Lucky
+
+[https://github.com/luckykiptum]
+
+
+    
+   
+    
+
+
+
+
+
+
+
 

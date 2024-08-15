@@ -1,7 +1,13 @@
 import React from "react";
+import NavBar from "./NavBar";
 
 function BookingPage() {
+  function handleOnBook(){
+    alert("Successfully Booked!!")
+  }
   return (
+    <>
+    <NavBar/>
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-4">Book Your Appointment</h1>
 
@@ -93,13 +99,14 @@ function BookingPage() {
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+           onClick={handleOnBook} >
               Book Now
             </button>
           </div>
         </form>
       </div>
     </div>
+    </>
   );
 }
 

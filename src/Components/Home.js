@@ -1,16 +1,18 @@
 import React from "react";
-import NavBar from "NavBar";
-import DestinationCard from "DestinationCard";
-import DestinationList from "DestinationList";
+import NavBar from "./NavBar";
+import DestinationList from "./DestinationList";
+import FormComponent from "./Form";
 
 function Home() {
   return (
     <>
+    
       <header>
+       
         <NavBar />
       </header>
       <main>
-        <DestinationCard />
+        <FormComponent/>   
         <DestinationList />
       </main>
       <footer className="bg-gray-200 py-footer-padding text-center">

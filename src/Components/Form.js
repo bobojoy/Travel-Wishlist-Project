@@ -13,19 +13,6 @@ const FormComponent = () => {
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
 
-	// useEffect(() => {
-	// 	// Fetch existing destinations when the component mounts
-	// 	const fetchDestinations = async () => {
-	// 		try {
-	// 			const response = await axios.get('http://localhost:3000/destinations');
-	// 			setDestinations(response.data);
-	// 		} catch (err) {
-	// 			setError('Failed to fetch destinations.');
-	// 		}
-	// 	};
-
-	// 	fetchDestinations();
-	// }, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -40,9 +27,9 @@ const FormComponent = () => {
 
 		try {
 			const response = await axios.post(
-				'http://localhost:3000/destinations',
-				formData
-			);
+        "https://travel-wish-list-backend.vercel.app/destinations",
+        formData
+      );
 			setDestinations([...destinations, response.data]);
 			setSuccess('Entry added successfully!');
 			setError('');
@@ -60,7 +47,9 @@ const FormComponent = () => {
 
 	const handleDelete = async (id) => {
 		try {
-			await axios.delete(`http://localhost:3000/destinations/${id}`);
+			await axios.delete(
+        `https://travel-wish-list-backend.vercel.app/destinations/${id}`
+      );
 			setDestinations(
 				destinations.filter((destination) => destination.id !== id)
 			);

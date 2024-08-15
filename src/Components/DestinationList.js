@@ -4,9 +4,9 @@ import DestinationCard from "./DestinationCard";
 const DestinationList = () => {
   const [destination, setDestination] = useState([]);
   useEffect(()=> {
-    fetch("http://localhost:3000/destinations")
-    .then((res)=> res.json())
-    .then((data)=> setDestination(data))
+    fetch("https://travel-wish-list-backend.vercel.app/destinations")
+      .then((res) => res.json())
+      .then((data) => setDestination(data));
   }, [])
   return(
    <div className= "listcard">

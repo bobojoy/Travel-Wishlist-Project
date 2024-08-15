@@ -13,19 +13,19 @@ const FormComponent = () => {
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
 
-	useEffect(() => {
-		// Fetch existing destinations when the component mounts
-		const fetchDestinations = async () => {
-			try {
-				const response = await axios.get('http://localhost:3000/destinations');
-				setDestinations(response.data);
-			} catch (err) {
-				setError('Failed to fetch destinations.');
-			}
-		};
+	// useEffect(() => {
+	// 	// Fetch existing destinations when the component mounts
+	// 	const fetchDestinations = async () => {
+	// 		try {
+	// 			const response = await axios.get('http://localhost:3000/destinations');
+	// 			setDestinations(response.data);
+	// 		} catch (err) {
+	// 			setError('Failed to fetch destinations.');
+	// 		}
+	// 	};
 
-		fetchDestinations();
-	}, []);
+	// 	fetchDestinations();
+	// }, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -74,7 +74,7 @@ const FormComponent = () => {
 
 	return (
 		<div>
-			<h2>ADD NEW ENTRY</h2>
+			<h2>ADD DESTINATION</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor='name'>Name:</label>
@@ -119,13 +119,13 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<button type='submit'>Add Entry</button>
+				<button type='submit'>Add Destination</button>
 			</form>
 			{error && <p style={{ color: 'red' }}>{error}</p>}
 			{success && <p style={{ color: 'green' }}>{success}</p>}
 
-			<h2>Existing Destinations</h2>
-			<ul>
+			<h2 className='text-center'>Existing Destinations</h2>
+			<ul className='listcard'>
 				{destinations.map((destination) => (
 					<li key={destination.id}>
 						<p>

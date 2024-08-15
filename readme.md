@@ -66,6 +66,9 @@ For styling web pages
 ###  Tailwind CSS
 For utility-first CSS styling.
 
+### live link
+https://travel-wishlist-project-i54m.vercel.app/
+
 ### Contributers
 1. Allan
 

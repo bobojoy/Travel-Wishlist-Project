@@ -5,7 +5,7 @@
 
 This project provides a RESTful API to access a collection of travel destinations. The data is served from a local JSON file (db.json) and includes various destinations around the world with details such as name, country, notes, and image URLs.
 
-## API Endpoints
+## API Endpoints.
 
 ### **GET /destinations**
 Fetches the list of all travel destinations.

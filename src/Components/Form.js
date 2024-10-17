@@ -63,11 +63,11 @@ const FormComponent = () => {
 
 	return (
 		<div>
-			<h2>ADD DESTINATION</h2>
+			<h2 className='ADD_DEST'>ADD DESTINATION</h2>
 			<form onSubmit={handleSubmit}>
 				<div className='Name'>
 					<label htmlFor='name'>Name:</label>
-					<input
+					<input className='input'
 						type='text'
 						id='name'
 						name='name'

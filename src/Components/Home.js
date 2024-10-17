@@ -2,17 +2,19 @@ import React from "react";
 import NavBar from "./NavBar";
 import DestinationList from "./DestinationList";
 import FormComponent from "./Form";
+import '../App.css';
 
 function Home() {
   return (
-    <>
+    < div className="Home">
     
-      <header>
+      <header className="header">
        
         <NavBar />
       </header>
       <main>
-        <FormComponent/>   
+        <FormComponent/> 
+        <h1 className="list">Existing Destinations</h1>  
         <DestinationList />
       </main>
       <footer className="bg-gray-200 py-footer-padding text-center">
@@ -53,7 +55,7 @@ function Home() {
           </ul>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 

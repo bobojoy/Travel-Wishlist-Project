@@ -2,20 +2,29 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  
 }
 
 form {
-  background-color: rgb(201, 220, 221);
+  background-color: rgb(235, 246, 247);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 20px;
+}
+
+.Name{
+  width: 400px;
 }
 
 label {

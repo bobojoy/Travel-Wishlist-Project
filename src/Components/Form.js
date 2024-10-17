@@ -65,7 +65,7 @@ const FormComponent = () => {
 		<div>
 			<h2>ADD DESTINATION</h2>
 			<form onSubmit={handleSubmit}>
-				<div>
+				<div className='Name'>
 					<label htmlFor='name'>Name:</label>
 					<input
 						type='text'
@@ -76,7 +76,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Country'>
 					<label htmlFor='country'>Country:</label>
 					<input
 						type='text'
@@ -87,7 +87,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Notes'>
 					<label htmlFor='notes'>Notes:</label>
 					<textarea
 						id='notes'
@@ -97,7 +97,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Image_Url'>
 					<label htmlFor='imageUrl'>Image URL:</label>
 					<input
 						type='text'

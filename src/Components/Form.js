@@ -27,7 +27,7 @@ const FormComponent = () => {
 
 		try {
 			const response = await axios.post(
-        "https://travel-wish-list-backend.vercel.app/destinations",
+        "http://localhost:3000/destinations",
         formData
       );
 			setDestinations([...destinations, response.data]);
@@ -47,9 +47,7 @@ const FormComponent = () => {
 
 	const handleDelete = async (id) => {
 		try {
-			await axios.delete(
-        `https://travel-wish-list-backend.vercel.app/destinations/${id}`
-      );
+			await axios.delete(`http://localhost:3000/destinations/${id}`);
 			setDestinations(
 				destinations.filter((destination) => destination.id !== id)
 			);

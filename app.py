@@ -24,3 +24,11 @@ def index():
 def get_destinations():
     destinations = Destination.query.all()
     return jsonify([d.to_dict(only=("id", "name", "country")) for d in destinations]), 200
+
+@app.route('/destinations/<int:id>', methods=['GET'])
+def get_destination(id):
+    destination = Destination.query.get(id)
+    if destination:
+        return jsonify(destination.to_dict()), 200
+    else:
+        return jsonify({"error": "Destination not found"}), 404

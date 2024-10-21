@@ -76,3 +76,5 @@ def get_attractions_for_destination(destination_id):
     return jsonify({"error": "Destination not found"}), 404
 
 
+if __name__ == '__main__':
+    app.run(port=5555, debug=True)

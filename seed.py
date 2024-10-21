@@ -43,4 +43,30 @@ with app.app_context():
     
     
     
+    destinations = [d1 , d2 , d3 , d4 , d5 , d6 , d7 , d8 , d9 , d10 , d11 , d12 , d13 , d14 , d15 , d16 , d17 , d18 , d19 , d20]     
     
+    
+    print("Creating Attractions ...")  
+    a1 = Attraction(description = "Famous for the Great Migration and rich wildlife, including lions, elephants, and cheetahs.")
+    a2 = Attraction(description = "Known for its stunning sunsets, white-washed buildings, and crystal-clear waters.")
+    a3 = Attraction(description = "A beautiful white-sand beach with clear waters, perfect for snorkeling and diving.")
+    a4 = Attraction(description = "An ancient Incan city nestled in the Andes mountains, known for its archaeological significance.")
+    a5 = Attraction(description = "An ancient world wonder, stretching over 13,000 miles with breathtaking views.")
+    a6 = Attraction(description = "Africa's second-highest peak, offering scenic trekking routes and stunning views.")
+    a7 = Attraction(description = "A world-renowned architectural marvel, located in the Sydney Harbour.")
+    a8 = Attraction(description = "Known for its large elephant herds and breathtaking views of Mount Kilimanjaro.")
+    a9 = Attraction(description = "An iconic symbol of Paris, offering stunning views of the city from its observation decks.")
+    a10 = Attraction(description = "A UNESCO World Heritage Site with rich Swahili culture and historic architecture.")
+    a11 = Attraction(description = "A natural wonder, known for its immense size and colorful landscape carved by the Colorado River.")
+    a12 = Attraction(description = "A UNESCO World Heritage Site and symbol of love, known for its stunning white marble architecture.")
+    a13 = Attraction(description = "One of the largest and most famous waterfalls in the world, located on the Zambezi River.")
+    a14 = Attraction(description = "Ancient wonders of the world, located near Cairo, known for their historical significance and grandeur.")
+    a15 = Attraction(description = "A beautiful national park in the Canadian Rockies, known for its stunning lakes, mountains, and wildlife.")
+    a16 = Attraction(description = "Famous for its flamingo population and diverse bird species in a beautiful lakeside setting.")
+    a17 = Attraction(description = "Home to unique wildlife species like the Grevy's zebra, reticulated giraffe, and Somali ostrich.")
+    a18 = Attraction(description = "Offers hiking and rock climbing opportunities, along with geothermal features like hot springs.")
+    a19 = Attraction(description = "One of the largest national parks in the world, known for its red elephants and diverse landscapes")
+    a20 = Attraction(description = "A unique park located just outside Nairobi, home to rhinos, lions, and giraffes, with the city skyline in the background.")
+    
+    
+   

@@ -1,0 +1,49 @@
+  
+from app import app 
+from models import db, Destination , Attraction , DestinationAttraction  
+  
+with app.app_context(): 
+    
+    
+    # This will delete any existing rows
+    # so you can run the seed file multiple times without having duplicate entries in your database
+    
+    
+     
+    print("Deleting data ...")
+    Destination.query.delete()
+    Attraction.query.delete() 
+    DestinationAttraction.query.delete()
+    
+    print("Creating Destinations...")
+    
+    d1 = Destination(name="Maasai Mara National Reserve", country="Kenya",image_url="https://images.unsplash.com/photo-1623951578056-5082d34a9859?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D"),  
+    d2 = Destination(name="Santorini", country="Greece",  image_url="https://images.unsplash.com/photo-1661602715715-4db69e772aa3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNhbnRvcmluaSUyMGdyZWVjZXxlbnwwfHwwfHx8MA%3D%3D"),  
+    d3 = Destination(name="Diani Beach", country="Kenya", image_url="https://images.unsplash.com/photo-1664093671658-a2aac3a344a9?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlhbmklMjBiZWFjaHxlbnwwfHwwfHx8MA%3D%3D"), 
+    d4 = Destination(name="Machu Picchu", country="Peru", image_url="https://images.unsplash.com/photo-1703568092973-4192b759ed00?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjaHUlMjBwaWNjaHV8ZW58MHx8MHx8fDA%"). 
+    d5 = Destination(name="Great Wall of China", country="china", image_url="https://images.unsplash.com/photo-1653966138964-112d0b40833e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JlYXR3YWxsb2ZjaGluYXxlbnwwfHwwfHx8MA%3D%3D"),
+    d6 = Destination(name="Mount Kenya" , country="Kenya", image_url="https://images.unsplash.com/photo-1658823201653-75f1ff511d02?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnQlMjBrZW55YXxlbnwwfHwwfHx8MA%3D%3D"),
+    d7 = Destination(name="Sydney Opera House", country="Australia", image_url="https://plus.unsplash.com/premium_photo-1697730221799-f2aa87ab2c5d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3lkbmV5JTIwb3BlcmElMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D"),
+    d8 = Destination(name="Amboseli National Park", country="Kenya", image_url="https://plus.unsplash.com/premium_photo-1661842568067-14ff7610f657?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1ib3NlbGklMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D"),
+    d9 = Destination(name="Eiffel Tower", country="France", image_url="https://plus.unsplash.com/premium_photo-1661963064037-cfcf2e10db2d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWlmZmVsJTIwdG93ZXJ8ZW58MHx8MHx8fDA%3D")
+    d10 = Destination(name="Lamu Island", country="kenya" , image_url="https://plus.unsplash.com/premium_photo-1673292359580-6debf0432b73?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFtdSUyMGlzbGFuZHxlbnwwfHwwfHx8MA%3D%3D"),
+    d11 = Destination(name="Grand Canyon", country= "United States", image_url="https://plus.unsplash.com/premium_photo-1669050701110-a5eb879f1b6a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhbmQlMjBjYW55b258ZW58MHx8MHx8fDA%3D"),
+    d12 = Destination(name="Taj Mahal", country="India", image_url="https://plus.unsplash.com/premium_photo-1661885523029-fc960a2bb4f3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGFqJTIwbWFoYWx8ZW58MHx8MHx8fDA%3D"),
+    d13 = Destination(name="Victoria Falls", country="Zimbabwe/Zambia", image_url="https://images.unsplash.com/photo-1678714001094-ba90abd57fec?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmljdG9yaWElMjBmYWxsc3xlbnwwfHwwfHx8MA%3D%3D"),
+    d14 = Destination(name="Pyramids of Giza", country="Egypt", image_url="https://plus.unsplash.com/premium_photo-1661891622579-bee76e28c304?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHlyYW1pZHMlMjBvZiUyMGdpemF8ZW58MHx8MHx8fDA%3D"),
+    d15 = Destination(name="Banff National Park", country="Canada", image_url="https://images.unsplash.com/photo-1564846930470-4b034d717347?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFuZmYlMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D"),
+    d16 = Destination(name="Lake Nakuru National Park", country="Kenya", image_url="https://plus.unsplash.com/premium_photo-1661826903386-4d5f7471152d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFrZSUyMG5ha3VydSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D"),
+    d17 = Destination(name="Samburu National Reserve", country="Kenya", image_url="https://plus.unsplash.com/premium_photo-1666756340142-3523bd857e35?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2FtYnVydSUyMG5hdGlvbmFsJTIwcmVzZXJ2ZXxlbnwwfHwwfHx8MA%3D%3D"),
+    d18 = Destination(name="Hell's Gate National Park", country="Kenya", image_url="https://p lus.unsplash.com/premium_photo-1664115701437-2bd5849c2793?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVsbCdzJTIwZ2F0ZSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D"),
+    d19 = Destination(name="Tsavo National Park", country="Kenya", image_url="https://plus.unsplash.com/premium_photo-1664303575598-026ebb947a96?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHNhdm8lMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D"),
+    d20 = Deatination(name="Nairobi National Park", country="Kenya", image_url="https://plus.unsplash.com/premium_photo-1697729856847-ae499843242f?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmFpcm9iaSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D"),
+    
+    
+    
+    
+    
+    
+    destinations = [d1 , d2 , d3 , d4 , d5 , d6 , d7 , d8 , d9 , d10 , d11 , d12 , d13 , d14 , d15 , d16 , d17 , d18 , d19 , d20]     
+    
+    
+  

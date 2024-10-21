@@ -15,6 +15,8 @@ form {
   flex-direction: column;
   align-items: center;
   background-image: url(https://images.unsplash.com/photo-1497302347632-904729bc24aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D);
+  background-size: cover;
+  background-position: center;
  
 }
 
@@ -27,7 +29,7 @@ h2 {
 
 .Name, .Country, .Notes,.Image_Url{
   width: 400px;
-  color: white;
+  color: black;
 }
 
 label {
@@ -68,15 +70,17 @@ button {
   transition: background-color 0.3s ease;
 }
 .Home{
-  background-color: black;
+  background-color: rgb(88, 70, 70);
+  border-radius: 40px;
 }
 
+
 button:hover {
-  background-color: hotpink;
+  background-color: blanchedalmond;
 }
 
 .error {
-  color: #ef4444;
+  color: black;
   font-size: 0.875rem;
   margin-top: 10px;
 }
@@ -93,18 +97,18 @@ ul {
 }
 
 li {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
+  background-color: rgb(68, 97, 93) ;
+  border-radius: 40px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  /* padding: 30px; */
+  /* margin-bottom: 20px; */
 }
 
 
 li p {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 30px;
+  line-height: 3.0;
 }
 
 li img {
@@ -115,7 +119,7 @@ li img {
 }
 
 li button {
-  background-color: #ef4444;
+  background-color: black;
   color: #ffffff;
   border: none;
   padding: 5px 10px;
@@ -123,12 +127,85 @@ li button {
   cursor: pointer;
   font-size: 0.75rem;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.1s ease;
 }
 
-li button:hover {
-  background-color: indigo;
+.facebook{
+  font-size: 30px;
+  color:#1877F2;
 }
+
+.facebook:hover{
+  color: #10b981;
+
+}
+
+.twitter{
+  font-size: 38px;
+  color: #1DA1F2;
+}
+
+.twitter:hover{
+  color: #10b981;
+}
+
+.instagram{
+  font-size: 30px;
+  color: #C13584;
+}
+
+.name{
+  color: #10b981;
+}
+
+.booking{
+   background-color:  rgb(88, 70, 70);
+
+}
+
+.bg-contact {
+  background-image: url(https://images.unsplash.com/photo-1489914169085-9b54fdd8f2a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWR2ZW50dXJlfGVufDB8fDB8fHww); /* Adjust the path */
+  background-size: cover; 
+  /* background-position: center;  */
+}
+
+.mb-6{
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.mb-4{
+  color:rgb(66, 141, 184) ;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.mb-3{
+  color: #1DA1F2 ;
+}
+
+.phone1{
+  border-radius: 50px;
+}
+
+.phone2{
+  border-radius: 50px;
+}
+
+.email{
+  border-radius: 50px;
+}
+
+.review{
+  background-color:  rgb(88, 70, 70);
+}
+
+.contact{
+  background-color:  rgb(88, 70, 70);
+}
+
+
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -141,6 +218,117 @@ li button:hover {
   background-color: black;
 
 }
+
+.mb-0{
+  color:  rgb(231, 202, 167);
+  margin-bottom: 10px;
+  margin-left: 40px;
+  
+}
+
+.namebox{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  font-weight: bolder;
+  max-width: 300px;
+  background-color: #fff;
+  transition: transform 0.2s;
+  background-color: black;
+
+}
+
+.mb-1{
+  color: rgb(231, 202, 167) ;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+
+.emailbox{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  font-weight: bolder;
+  max-width: 300px;
+  transition: transform 0.2s;
+  background-color: black;
+
+}
+
+
+.mb-8{
+  color:  rgb(231, 202, 167);
+  margin-bottom: 10px;
+  margin-left: 40px;
+  
+}
+
+.datebox{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  margin-right: 50px;
+  font-weight: bolder;
+  max-width: 300px;
+  color: grey;
+  transition: transform 0.2s;
+  background-color: black;
+
+}
+
+.mb-7{
+  color:  rgb(231, 202, 167);
+  margin-bottom: 10px;
+  margin-left: 50px;
+  
+}
+
+
+
+.timebox{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  margin-right: 80px;
+  font-weight: bolder;
+  max-width: 300px;
+  color:grey;
+  transition: transform 0.2s;
+  background-color: black;
+
+}
+
+.mb-9{
+  color:  rgb(231, 202, 167);
+  margin-bottom: 10px;
+  margin-left: 50px;
+  
+}
+
+.notesbox{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  margin-right: 80px;
+  font-weight: bolder;
+  max-width: 300px;
+  color:grey;
+  transition: transform 0.2s;
+  background-color: black;
+
+}
+
+
 
 .card:hover {
   transform: scale(1.05);
@@ -178,6 +366,7 @@ li button:hover {
   background-color: rgb(68, 97, 93);
   display: flex;
   padding: 5px;
+  border-radius: 40px;
 }
 .ADD_DEST{
   color: white;
@@ -198,15 +387,18 @@ li button:hover {
   display: flex;
 }
 
+.NAV:hover{
+  color:  black;
+}
+
 .nav {
   padding: 10px;
   display: flex;
 }
-/* .NAV:hover{
-  background-color: blue;
-} */
+
 .img1 {
   width: 100px;
   height: 100px;
   border-radius: 50px;
+
 }

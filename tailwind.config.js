@@ -8,9 +8,9 @@ module.exports = {
         twitter: "#1DA1F2",
         instagram: "#C13584",
       },
-      spacing: {
-        "footer-padding": "1rem",
-      },
+      // spacing: {
+      //   "footer-padding": "1rem",
+      // },
     },
   },
   plugins: [],

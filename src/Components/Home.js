@@ -29,7 +29,7 @@ function Home() {
                 href="https://www.facebook.com"
                 target="-blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-facebook"
+                className="facebook"
               >
                 <FontAwesomeIcon icon={faFacebook} className="mr-2" />
                 Facebook
@@ -41,7 +41,7 @@ function Home() {
                 href="https://twitter.com"
                 target="-blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-twitter"
+                className="twitter"
               >
                 <FontAwesomeIcon icon={faTwitter} className="mr-2" />
                 Twitter
@@ -53,7 +53,7 @@ function Home() {
                 href="https://www.instagram.com"
                 target="-blank"
                 rel="noopener noreferrer"
-                className="text-gray-800 hover:text-instagram"
+                className="instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} className="mr-2" />
                 Instagram

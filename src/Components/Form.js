@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // This is a generalised name of GET,POST,PUT,DELETE
+import axios from 'axios'; 
 import '../App.css';
 
 const FormComponent = () => {

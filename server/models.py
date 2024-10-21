@@ -15,14 +15,14 @@ class Destination (db.Model, SerializerMixin):
     image_url = db.Column(db.String(2000))
     
     destination_attractions = db.relationship('DestinationAttraction', back_populates='destination', cascade = "all,delete-orphan")
-    attractions = association_proxy ('destination_attractions.destination', '-attraction.destinations')
+    attractions = association_proxy ('destination_attractions','attraction')
     
     serialize_rules = ('-destination_attractions.destination','-attractions')
 
   
     
 
-    def __repr__(self):
+    def _repr_(self):
         return f'<Destination {self.name}>'
     
     
@@ -36,9 +36,9 @@ class Attraction(db.Model,SerializerMixin):
     
     destinations = association_proxy('destination_attractions', 'destination')
     
-    serialize_rules = ('-destination_attractions.attraction','-destination.attractions')
+    serialize_rules = ('-destination_attractions.attraction','-destinations')
 
-    def __repr__(self):
+    def _repr_(self):
         return f'<Attraction {self.name}>'
     
 class DestinationAttraction(db.Model,SerializerMixin):
@@ -51,7 +51,7 @@ class DestinationAttraction(db.Model,SerializerMixin):
     destination = db.relationship('Destination', back_populates='destination_attractions')
     attraction = db.relationship('Attraction', back_populates='destination_attractions')
     
-    serialize_rules = ('-destination.destination_attractions',-attraction.destination_attractions)
+    serialize_rules = ('-destination.destination_attractions','-attraction.destination_attractions')
 
     @validates('rating')
     def validate_rating(self, key, value):
@@ -59,6 +59,5 @@ class DestinationAttraction(db.Model,SerializerMixin):
             raise ValueError('Rating must be between 1 and 5')
         return value
 
-    def __repr__(self):
-        return f'<DestinationAttraction {self.id}>'    
-   
+    def _repr_(self):
+        return f'<DestinationAttraction {self.id}>'

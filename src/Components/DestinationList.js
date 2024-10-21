@@ -3,6 +3,7 @@ import DestinationCard from "./DestinationCard";
 
 const DestinationList = () => {
   const [destinations, setDestinations] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/destinations")
@@ -11,10 +12,19 @@ const DestinationList = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  const handleCardClick = (id) => {
+    setSelectedId(id);
+  };
+
   return (
     <div className="listcard">
       {destinations.map((des) => (
-        <DestinationCard key={des.id} destination={des} />
+        <DestinationCard
+          key={des.id}
+          destination={des}
+          isSelected={selectedId === des.id}
+          onClick={() => handleCardClick(des.id)}
+        />
       ))}
     </div>
   );

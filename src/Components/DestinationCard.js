@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 
-const DestinationCard = ({ destination }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleClick = () => {
-    setIsExpanded((prev) => !prev);
-  };
-
+const DestinationCard = ({ destination, isSelected, onClick }) => {
   return (
-    <div className="card" onClick={handleClick} style={{ cursor: "pointer" }}>
+    <div className="card" onClick={onClick} style={{ cursor: "pointer" }}>
       <img src={destination.imageUrl} alt={destination.name} />
-      <h3> {destination.name}</h3>
-      {isExpanded && (
+      <h3>{destination.name}</h3>
+      {isSelected && (
         <div className="details">
           <p>Country: {destination.country}</p>
           <p>Description: {destination.notes}</p>

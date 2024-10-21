@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import DestinationList from "./DestinationList";
 import FormComponent from "./Form";
-import '../App.css';
+import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -27,7 +27,7 @@ function Home() {
             <li>
               <a
                 href="https://www.facebook.com"
-                target="-blank"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="facebook"
               >
@@ -35,11 +35,10 @@ function Home() {
                 Facebook
               </a>
             </li>
-
             <li>
               <a
                 href="https://twitter.com"
-                target="-blank"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="twitter"
               >
@@ -47,11 +46,10 @@ function Home() {
                 Twitter
               </a>
             </li>
-
             <li>
               <a
                 href="https://www.instagram.com"
-                target="-blank"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="instagram"
               >

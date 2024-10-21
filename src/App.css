@@ -101,9 +101,9 @@ ul {
 li {
   background-color: rgb(68, 97, 93) ;
   border-radius: 40px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-  /* padding: 30px; */
-  /* margin-bottom: 20px; */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 30px; 
+  margin-bottom: 20px;
 }
 
 
@@ -168,7 +168,7 @@ li button {
 .bg-contact {
   background-image: url(https://images.unsplash.com/photo-1489914169085-9b54fdd8f2a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWR2ZW50dXJlfGVufDB8fDB8fHww); /* Adjust the path */
   background-size: cover; 
-  /* background-position: center;  */
+  
 }
 
 .mb-6{
@@ -371,7 +371,7 @@ li button {
   border-radius: 40px;
 }
 .ADD_DEST{
-  color: white;
+  color: palegoldenrod;
   padding-left: 40px;
 }
 .list{

@@ -32,3 +32,13 @@ def get_destination(id):
         return jsonify(destination.to_dict()), 200
     else:
         return jsonify({"error": "Destination not found"}), 404
+    
+@app.route('/destinations/<int:id>', methods=['DELETE'])
+def delete_destination(id):
+    destination = Destination.query.get(id)
+    if destination:
+        db.session.delete(destination)
+        db.session.commit()
+        return jsonify({"message": "Destination deleted successfully"}), 200
+    else:
+        return jsonify({"error": "Destination not found"}), 404

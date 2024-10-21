@@ -7,9 +7,10 @@ const DestinationCard = ({ destination, isSelected, onClick }) => {
       <img src={destination.imageUrl} alt={destination.name} />
       <h3>{destination.name}</h3>
       {isSelected && (
-        <div className="details">
-          <p>Country: {destination.country}</p>
-          <p>Description: {destination.notes}</p>
+        <div className="detail">
+          <p>Country  : {destination.country}</p>
+          <p>Description  :
+            {destination.notes}</p>
         </div>
       )}
     </div>

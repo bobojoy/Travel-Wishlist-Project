@@ -2,10 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  
 }
-
-
 
 form {
   background-color: rgb(68, 97, 93);
@@ -21,7 +18,6 @@ form {
   background-position: center;
  
 }
-
 
 h2 {
   font-size: 1.5rem;
@@ -101,9 +97,9 @@ ul {
 li {
   background-color: rgb(68, 97, 93) ;
   border-radius: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   padding: 30px; 
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
 }
 
 
@@ -207,7 +203,6 @@ li button {
   background-color:  rgb(88, 70, 70);
 }
 
-
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -218,7 +213,6 @@ li button {
   background-color: #fff;
   transition: transform 0.2s;
   background-color: black;
-
 }
 
 .mb-0{
@@ -239,7 +233,6 @@ li button {
   background-color: #fff;
   transition: transform 0.2s;
   background-color: black;
-
 }
 
 .mb-1{
@@ -260,7 +253,6 @@ li button {
   background-color: black;
 
 }
-
 
 .mb-8{
   color:  rgb(231, 202, 167);
@@ -290,8 +282,6 @@ li button {
   margin-left: 50px;
   
 }
-
-
 
 .timebox{
   border: 1px solid #ddd;
@@ -330,8 +320,6 @@ li button {
 
 }
 
-
-
 .card:hover {
   transform: scale(1.05);
 }
@@ -353,7 +341,7 @@ li button {
 
 .card p {
   margin: 8px 0;
-  color: white;
+  color:  palegoldenrod;
   font-size: 1rem;
 }
 .listcard {
@@ -361,6 +349,7 @@ li button {
   grid-template-columns: repeat(4, 1fr);
   margin-left: 70px;
 }
+
 .text-center {
   text-align: center;
 }
@@ -375,12 +364,16 @@ li button {
   padding-left: 40px;
 }
 .list{
-  color: white;
+  color: palegoldenrod;
   padding-left: 40px;
 }
+
+.detail{
+  color: palegoldenrod;
+}
+
 .NAV {
   border-radius: 10px;
-
   color: rgb(243, 237, 237);
   font-size: larger;
   font-style: italic;

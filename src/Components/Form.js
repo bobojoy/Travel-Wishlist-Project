@@ -111,7 +111,7 @@ const FormComponent = () => {
 			{error && <p style={{ color: 'red' }}>{error}</p>}
 			{success && <p style={{ color: 'green' }}>{success}</p>}
 
-			<h2 className='text-center'>Existing Destinations</h2>
+			<h2 className='text-center'></h2>
 			<ul className='listcard'>
 				{destinations.map((destination) => (
 					<li key={destination.id}>

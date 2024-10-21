@@ -67,5 +67,12 @@ def link_destination_attraction():
         return jsonify(new_link.to_dict()), 201
     except Exception as e:
         return jsonify({"error": "Validation error"}), 400
+@app.route('/destinations/<int:destination_id>/attractions', methods=['GET'])
+def get_attractions_for_destination(destination_id):
+    destination = db.session.get(Destination, destination_id)
+    if destination:
+        attractions = [link.attraction.to_dict() for link in destination.destination_attractions]
+        return jsonify(attractions), 200
+    return jsonify({"error": "Destination not found"}), 404
 
-   
+

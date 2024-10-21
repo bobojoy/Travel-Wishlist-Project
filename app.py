@@ -1,6 +1,6 @@
 from models import db, Destination, Attraction, DestinationAttraction
 from flask_migrate import Migrate
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify 
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -23,7 +23,7 @@ def index():
 @app.route('/destinations', methods=['GET'])
 def get_destinations():
     destinations = Destination.query.all()
-    return jsonify([d.to_dict(only=("id", "name", "country")) for d in destinations]), 200
+    return jsonify([d.to_dict(only=("id", "name", "country", "image_url")) for d in destinations]), 200
 
 @app.route('/destinations/<int:id>', methods=['GET'])
 def get_destination(id):

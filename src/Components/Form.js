@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // This is a generalised name of GET,POST,PUT,DELETE
+import axios from 'axios'; 
 import '../App.css';
 
 const FormComponent = () => {
@@ -13,19 +13,6 @@ const FormComponent = () => {
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
 
-	// useEffect(() => {
-	// 	// Fetch existing destinations when the component mounts
-	// 	const fetchDestinations = async () => {
-	// 		try {
-	// 			const response = await axios.get('http://localhost:3000/destinations');
-	// 			setDestinations(response.data);
-	// 		} catch (err) {
-	// 			setError('Failed to fetch destinations.');
-	// 		}
-	// 	};
-
-	// 	fetchDestinations();
-	// }, []);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -40,9 +27,9 @@ const FormComponent = () => {
 
 		try {
 			const response = await axios.post(
-				'http://localhost:3000/destinations',
-				formData
-			);
+        "http://localhost:3000/destinations",
+        formData
+      );
 			setDestinations([...destinations, response.data]);
 			setSuccess('Entry added successfully!');
 			setError('');
@@ -74,11 +61,11 @@ const FormComponent = () => {
 
 	return (
 		<div>
-			<h2>ADD DESTINATION</h2>
+			<h2 className='ADD_DEST'>ADD DESTINATION</h2>
 			<form onSubmit={handleSubmit}>
-				<div>
+				<div className='Name'>
 					<label htmlFor='name'>Name:</label>
-					<input
+					<input className='input'
 						type='text'
 						id='name'
 						name='name'
@@ -87,7 +74,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Country'>
 					<label htmlFor='country'>Country:</label>
 					<input
 						type='text'
@@ -98,7 +85,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Notes'>
 					<label htmlFor='notes'>Notes:</label>
 					<textarea
 						id='notes'
@@ -108,7 +95,7 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div>
+				<div className='Image_Url'>
 					<label htmlFor='imageUrl'>Image URL:</label>
 					<input
 						type='text'

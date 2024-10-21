@@ -69,4 +69,46 @@ with app.app_context():
     a20 = Attraction(description = "A unique park located just outside Nairobi, home to rhinos, lions, and giraffes, with the city skyline in the background.")
     
     
-   
+    attractions = [a1 , a2 , a3 , a4 , a5 , a6 , a7 , a8 , a9 , a10 , a11 , a12 , a13 , a14 , a15 , a16 , a17 , a18 , a19 , a20]
+    
+    print("Creating DestinationAttraction ...")
+    
+    dr1 = DestinationAttraction(destination = d1 ,attraction = a1, rating = 5)
+    dr2 = DestinationAttraction(destination = d2, attraction = a2, rating = 4)
+    dr3 = DestinationAttraction(destination = d3, attraction = a3, rating = 3)
+    dr4 = DestinationAttraction(destination = d4, attraction = a4, rating = 5)
+    dr5 = DestinationAttraction(destination = d5, attraction = a5, rating = 3)
+    dr6 = DestinationAttraction(destination = d6, attraction = a6, rating = 5)
+    dr7 = DestinationAttraction(destination = d7, attraction = a7, rating = 1)
+    dr8 = DestinationAttraction(destination = d8, attraction = a8, rating = 2)
+    dr9 = DestinationAttraction(destination = d9, attraction = a9, rating = 3)
+    dr10 = DestinationAttraction(description = d10, attraction = a10, rating = 4)
+    dr11 = DestinationAttraction(description = d11, attraction = a11, rating = 5)
+    dr12 = DestinationAttraction(description = d12, attraction = a12, rating = 1)
+    dr13 = DestinationAttraction(description = d13, attraction = a13, rating = 2)
+    dr14 = DestinationAttraction(destination = d14, attraction = a14, rating = 3)
+    dr15 = DestinationAttraction(description = d15, attraction = a15, rating = 2)
+    dr16 = DestinationsAttraction(description = d16, attraction = a16, rating = 3)
+    dr17 = DestinationAttraction(description = d17, attraction = a17, rating = 2)
+    dr18 = DestinationAttraction(description = d18, attraction = a18, rating = 1)
+    dr19 = DestinationAttraction(description = d19, attraction = a19, rating = 3)
+    dr20 = DestinationAttraction(description = d20, attraction = a20, rating = 4)
+    
+    
+    
+    
+
+    destinationAttractions = [dr1 , dr2 , dr3 , dr4 , dr5 , dr6 , dr7 , dr8 , dr9 , dr10 , dr11 , dr12 , dr13 , dr14 , dr15 , dr16 , dr17 , dr17 , dr18 , dr19 , dr20]
+
+
+    db.session.add_all(destinations)
+    db.session.add_all(attractions)
+    db.session.add_all(destinationAttractions)
+
+    db.session.commit()
+
+    print("Seeding done!")
+    
+    
+
+    

@@ -2,62 +2,71 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
-
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 db = SQLAlchemy()
+
+class User(db.Model, SerializerMixin):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), nullable=False, unique=True)
+    password= db.Column(db.String(128))
+    email = db.Column(db.String(100))
+    
+    bookings = db.relationship('Booking', back_populates='user')
+    
+    @validates('email')
+    def validate_email(self, key, value):
+        if '@' not in value:
+            raise ValueError('@ must be a valid email address')
+        return value
+
+    def set_password(self, password,username):
+        self.username = username
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+  
 
 class Destination (db.Model, SerializerMixin):
     __tablename__ = 'destinations'
 
     id = db.Column(db.Integer, primary_key=True)
+    image_url = db.Column(db.String(2000))
     name = db.Column(db.String(100), nullable=False)
     country =  db.Column(db.String(100), nullable=False)
-    image_url = db.Column(db.String(2000))
+    description = db.Column(db.String(1000))
     
-    destination_attractions = db.relationship('DestinationAttraction', back_populates='destination', cascade = "all,delete-orphan")
-    attractions = association_proxy ('destination_attractions','attraction')
+    bookings = db.relationship('Booking', back_populates='destination')
     
-    serialize_rules = ('-destination_attractions.destination','-attractions')
-
+    serialize_rules = ('-bookings.user',)
   
     
-
-    def _repr_(self):
-        return f'<Destination {self.name}>'
     
     
-class Attraction(db.Model,SerializerMixin):
-    __tablename__ = 'attractions'
-
+class Booking(db.Model,SerializerMixin):
+    __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String(1000))
-    # destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'), nullable=False)
-    destination_attractions = db.relationship('DestinationAttraction', back_populates='attraction', cascade = "all, delete-orphan")
-    
-    destinations = association_proxy('destination_attractions', 'destination')
-    
-    serialize_rules = ('-destination_attractions.attraction','-destinations')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    booking_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def _repr_(self):
-        return f'<Attraction {self.name}>'
     
-class DestinationAttraction(db.Model,SerializerMixin):
-    __tablename__ = 'destination_attractions'
-
+    user = db.relationship('User', back_populates='bookings')
+    destination = db.relationship('Destination', back_populates='bookings')
+    serialize_rules = ('-user.bookings', '-destination.bookings')
+    
+    
+    
+class DestinationBooking(db.Model,SerializerMixin):
+    __tablename__ = 'destination_bookings'
     id = db.Column(db.Integer, primary_key=True)
-    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'), nullable=False)
-    attraction_id = db.Column(db.Integer, db.ForeignKey('attractions.id'), nullable=False)
-    rating =  db.Column(db.Float, nullable=False)
-    destination = db.relationship('Destination', back_populates='destination_attractions')
-    attraction = db.relationship('Attraction', back_populates='destination_attractions')
-    
-    serialize_rules = ('-destination.destination_attractions','-attraction.destination_attractions')
-
-    @validates('rating')
-    def validate_rating(self, key, value):
-        if value < 1 or value > 5:
-            raise ValueError('Rating must be between 1 and 5')
-        return value
-
-    def _repr_(self):
-        return f'<DestinationAttraction {self.id}>'
+    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    booking_id = db.Column(db.Integer, db.ForeignKey('bookings.id'))
+    destination = db.relationship('Destination', back_populates='destination_bookings')
+    booking = db.relationship('Booking', back_populates='destination_bookings')
+    serialize_rules = ('-destination.destination_bookings', '-booking.destination_bookings')

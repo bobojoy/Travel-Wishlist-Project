@@ -11,11 +11,11 @@ const DestinationCard = ({ destination }) => {
   return (
     <div className="card" onClick={handleClick} style={{ cursor: "pointer" }}>
       <img src={destination.imageUrl} alt={destination.name} />
-      <h3>Name: {destination.name}</h3>
+      <h3> {destination.name}</h3>
       {isExpanded && (
         <div className="details">
           <p>Country: {destination.country}</p>
-          <p>Notes: {destination.notes}</p>
+          <p>Description: {destination.notes}</p>
         </div>
       )}
     </div>

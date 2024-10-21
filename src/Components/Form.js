@@ -85,8 +85,8 @@ const FormComponent = () => {
 						required
 					/>
 				</div>
-				<div className='Notes'>
-					<label htmlFor='notes'>Notes:</label>
+				<div className='Description'>
+					<label htmlFor='notes'>Description:</label>
 					<textarea
 						id='notes'
 						name='notes'
@@ -122,7 +122,7 @@ const FormComponent = () => {
 							<strong>Country:</strong> {destination.country}
 						</p>
 						<p>
-							<strong>Notes:</strong> {destination.notes}
+							<strong>Description:</strong> {destination.notes}
 						</p>
 						<p>
 							<strong>Image URL:</strong>{' '}

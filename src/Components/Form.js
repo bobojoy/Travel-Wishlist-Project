@@ -113,6 +113,7 @@ const FormComponent = () => {
 
 			<h2 className='text-center'></h2>
 			<ul className='listcard'>
+				
 				{destinations.map((destination) => (
 					<li key={destination.id}>
 						<p>

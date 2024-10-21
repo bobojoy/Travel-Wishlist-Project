@@ -84,7 +84,7 @@ button:hover {
 }
 
 .success {
-  color: #10b981;
+  color: black;
   font-size: 0.875rem;
   margin-top: 10px;
 }
@@ -348,6 +348,10 @@ li button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-left: 70px;
+}
+.output{
+  margin-left: 70px;
+  display: grid;
 }
 
 .text-center {

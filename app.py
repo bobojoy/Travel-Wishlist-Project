@@ -53,4 +53,19 @@ def create_attraction():
         return jsonify(new_attraction.to_dict()), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+@app.route('/destination_attractions', methods=['POST'])
+def link_destination_attraction():
+    data = request.get_json()
+    try:
+        new_link = DestinationAttraction(
+            destination_id=data['destination_id'],
+            attraction_id=data['attraction_id']
+        )
+        db.session.add(new_link)
+        db.session.commit()
+        return jsonify(new_link.to_dict()), 201
+    except Exception as e:
+        return jsonify({"error": "Validation error"}), 400
+
    

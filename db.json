@@ -126,7 +126,6 @@
       "notes": "A UNESCO World Heritage Site and symbol of love, known for its stunning white marble architecture.",
       "imageUrl": "https://plus.unsplash.com/premium_photo-1661885523029-fc960a2bb4f3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGFqJTIwbWFoYWx8ZW58MHx8MHx8fDA%3D"
     },
-
     {
       "id": "19",
       "name": "Tsavo National Park",
@@ -141,5 +140,6 @@
       "notes": "A unique park located just outside Nairobi, home to rhinos, lions, and giraffes, with the city skyline in the background.",
       "imageUrl": "https://plus.unsplash.com/premium_photo-1697729856847-ae499843242f?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmFpcm9iaSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D"
     }
+    
   ]
 }

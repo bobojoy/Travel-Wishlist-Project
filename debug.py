@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from app import app
-from models import db, Destination, WishlistItem  
+from models import db, Destination, Attraction,DestinationAtraction  
 
 if __name__ == '__main__':
     with app.app_context():

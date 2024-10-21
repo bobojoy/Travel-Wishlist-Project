@@ -42,3 +42,15 @@ def delete_destination(id):
         return jsonify({"message": "Destination deleted successfully"}), 200
     else:
         return jsonify({"error": "Destination not found"}), 404
+    
+@app.route('/attractions', methods=['POST'])
+def create_attraction():
+    data = request.get_json()
+    try:
+        new_attraction = Attraction(description=data['description'])
+        db.session.add(new_attraction)
+        db.session.commit()
+        return jsonify(new_attraction.to_dict()), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+   

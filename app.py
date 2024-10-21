@@ -14,3 +14,13 @@ app.json.compact = False
 
 migrate = Migrate(app, db)
 db.init_app(app)
+
+
+@app.route('/')
+def index():
+    return '<h1>Travel App</h1>'
+
+@app.route('/destinations', methods=['GET'])
+def get_destinations():
+    destinations = Destination.query.all()
+    return jsonify([d.to_dict(only=("id", "name", "country")) for d in destinations]), 200

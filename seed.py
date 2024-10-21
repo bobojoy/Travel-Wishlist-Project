@@ -65,7 +65,7 @@ with app.app_context():
     a16 = Attraction(description = "Famous for its flamingo population and diverse bird species in a beautiful lakeside setting.")
     a17 = Attraction(description = "Home to unique wildlife species like the Grevy's zebra, reticulated giraffe, and Somali ostrich.")
     a18 = Attraction(description = "Offers hiking and rock climbing opportunities, along with geothermal features like hot springs.")
-    a19 = Attraction(description = "One of the largest national parks in the world, known for its red elephants and diverse landscapes.")
+    a19 = Attraction(description = "One of the largest national parks in the world, known for its red elephants and diverse landscapes")
     a20 = Attraction(description = "A unique park located just outside Nairobi, home to rhinos, lions, and giraffes, with the city skyline in the background.")
     
     

@@ -1,80 +1,157 @@
-from models import db, Destination, Attraction, DestinationAttraction
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask import Flask, request, jsonify 
+from flask_restful import Api, Resource
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+# from werkzeug.security import check_password_hash
+from dotenv import load_dotenv
 import os
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get(
-    "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'travel.db')}")
+# Load environment variables from .env
+load_dotenv()
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
+
+# App setup
+app = Flask(__name__)  # Fixed typo: _name_ -> __name__
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 
-migrate = Migrate(app, db)
+from models import User, Destination, Booking, bcrypt, db
 db.init_app(app)
+bcrypt.init_app(app)
+# Database, Migrations, and API setup
+# db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+api = Api(app)
+jwt = JWTManager(app)
+
+# Import models
 
 
-@app.route('/')
-def index():
-    return '<h1>Travel App</h1>'
+# User Registration Resource
+class UserRegister(Resource):
+    def post(self):
+        data = request.get_json() if request.is_json else request.form
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
 
-@app.route('/destinations', methods=['GET'])
-def get_destinations():
-    destinations = Destination.query.all()
-    return jsonify([d.to_dict(only=("id", "name", "country", "image_url")) for d in destinations]), 200
+        if not username or not email or not password:
+            return {"error": "Username, email, and password are required"}, 400
 
-@app.route('/destinations/<int:id>', methods=['GET'])
-def get_destination(id):
-    destination = Destination.query.get(id)
-    if destination:
-        return jsonify(destination.to_dict()), 200
-    else:
-        return jsonify({"error": "Destination not found"}), 404
-    
-@app.route('/destinations/<int:id>', methods=['DELETE'])
-def delete_destination(id):
-    destination = Destination.query.get(id)
-    if destination:
+        if User.query.filter_by(email=email).first():
+            return {"error": "User with this email already exists"}, 400
+
+        new_user = User(username=username, email=email)
+        new_user.set_password(password)  # Ensure User model has this method
+        db.session.add(new_user)
+        db.session.commit()
+
+        return {"message": "User registered successfully"}, 201
+
+# User Login Resource
+class UserLogin(Resource):
+    def post(self):
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+
+        user = User.query.filter_by(email=email).first()
+        if user and user.check_password(password):  # Ensure User model has this method
+            access_token = create_access_token(identity=user.id)
+            return {"access_token": access_token}, 200
+        return {"error": "Invalid email or password"}, 401
+
+# Destination CRUD Resource
+class DestinationResource(Resource):
+    @jwt_required()
+    def get(self, destination_id=None):
+        if destination_id:
+            destination = Destination.query.get(destination_id)
+            if not destination:
+                return {"error": "Destination not found"}, 404
+            return destination.to_dict(), 200
+        destinations = Destination.query.all()
+        return [d.to_dict() for d in destinations], 200
+
+    @jwt_required()
+    def post(self):
+        data = request.get_json()
+        new_destination = Destination(
+            name=data['name'],
+            country=data['country'],
+            description=data['description'],
+            image_url=data['image_url']
+        )
+        db.session.add(new_destination)
+        db.session.commit()
+        return new_destination.to_dict(), 201
+
+    @jwt_required()
+    def put(self, destination_id):
+        destination = Destination.query.get(destination_id)
+        if not destination:
+            return {"error": "Destination not found"}, 404
+
+        data = request.get_json()
+        destination.name = data.get('name', destination.name)
+        destination.country = data.get('country', destination.country)
+        destination.description = data.get('description', destination.description)
+        destination.image_url = data.get('image_url', destination.image_url)
+
+        db.session.commit()
+        return destination.to_dict(), 200
+
+    @jwt_required()
+    def delete(self, destination_id):
+        destination = Destination.query.get(destination_id)
+        if not destination:
+            return {"error": "Destination not found"}, 404
+
         db.session.delete(destination)
         db.session.commit()
-        return jsonify({"message": "Destination deleted successfully"}), 200
-    else:
-        return jsonify({"error": "Destination not found"}), 404
-    
-@app.route('/attractions', methods=['POST'])
-def create_attraction():
-    data = request.get_json()
-    try:
-        new_attraction = Attraction(description=data['description'])
-        db.session.add(new_attraction)
-        db.session.commit()
-        return jsonify(new_attraction.to_dict()), 201
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
-    
-@app.route('/destination_attractions', methods=['POST'])
-def link_destination_attraction():
-    data = request.get_json()
-    try:
-        new_link = DestinationAttraction(
-            destination_id=data['destination_id'],
-            attraction_id=data['attraction_id']
+        return {"message": "Destination deleted successfully"}, 200
+
+# Booking CRUD Resource
+class BookingResource(Resource):
+    @jwt_required()
+    def get(self, booking_id=None):
+        if booking_id:
+            booking = Booking.query.get(booking_id)
+            if not booking:
+                return {"error": "Booking not found"}, 404
+            return booking.to_dict(), 200
+        bookings = Booking.query.all()
+        return [b.to_dict() for b in bookings], 200
+
+    @jwt_required()
+    def post(self):
+        data = request.get_json()
+        new_booking = Booking(
+            user_id=get_jwt_identity(),
+            destination_id=data['destination_id']
         )
-        db.session.add(new_link)
+        db.session.add(new_booking)
         db.session.commit()
-        return jsonify(new_link.to_dict()), 201
-    except Exception as e:
-        return jsonify({"error": "Validation error"}), 400
-@app.route('/destinations/<int:destination_id>/attractions', methods=['GET'])
-def get_attractions_for_destination(destination_id):
-    destination = db.session.get(Destination, destination_id)
-    if destination:
-        attractions = [link.attraction.to_dict() for link in destination.destination_attractions]
-        return jsonify(attractions), 200
-    return jsonify({"error": "Destination not found"}), 404
+        return new_booking.to_dict(), 201
 
+    @jwt_required()
+    def delete(self, booking_id):
+        booking = Booking.query.get(booking_id)
+        if not booking:
+            return {"error": "Booking not found"}, 404
 
-if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+        db.session.delete(booking)
+        db.session.commit()
+        return {"message": "Booking deleted"}, 200
+
+# Register resources with the API
+api.add_resource(UserRegister, '/register')
+api.add_resource(UserLogin, '/login')
+api.add_resource(DestinationResource, '/destinations', '/destinations/<int:destination_id>')
+api.add_resource(BookingResource, '/bookings', '/bookings/<int:booking_id>')
+
+# Run the app
+if __name__ == "__main__":  # Fixed typo: _name_ -> __name__
+    app.run(debug=True)

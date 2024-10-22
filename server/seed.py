@@ -1,75 +1,79 @@
-from app import app 
-from models import db, Destination , Booking , DestinationBooking
+from app import app, db
+from models import User, Destination, Booking, DestinationBooking
+from faker import Faker
 from datetime import datetime
-  
-with app.app_context(): 
-    
-    
-    # This will delete any existing rows
-    # so you can run the seed file multiple times without having duplicate entries in your database
-    
-    
-     
-    print("Deleting data ...")
-    User.query.delete()
-    Destination.query.delete() 
-    Booking.query.delete()
-    DestinationBooking.query.delete()
-    
-    print("Creating Users...")
-    u1 = User(username="user1", email="user1@gmail.com")
-    u2 = User(username="user2", email="user2@gmail.com")
-    u3 = User(username="user3", email="user3@gmail.com")
-    u4 = User(username="user4", email="user4@gmail.com")
-    u5 = User(username="user5", email="user5@gmail.com")
-    
-    db.session.add_all([u1, u2, u3, u4, u5])
+
+# Initialize Faker to generate fake data
+fake = Faker()
+
+def create_users():
+    """Creates random users."""
+    users = []
+    for _ in range(10):  # Create 10 fake users
+        user = User(
+            username=fake.user_name(),
+            email=fake.email(),
+            password=fake.password()
+        )
+        users.append(user)
+    db.session.add_all(users)
     db.session.commit()
-    
-    print("Creating Destination ...")
-    
-    
-    d1 = Destination(name="Maasai Mara National Reserve", country="Kenya",description = "Famous for the Great Migration and rich wildlife, including lions, elephants, and cheetahs.",image_url="https://images.unsplash.com/photo-1623951578056-5082d34a9859?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hc2FpJTIwbWFyYXxlbnwwfHwwfHx8MA%3D%3D")  
-    d2 = Destination(name="Santorini", country="Greece",description = "Known for its stunning sunsets, white-washed buildings, and crystal-clear waters.",  image_url="https://images.unsplash.com/photo-1661602715715-4db69e772aa3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNhbnRvcmluaSUyMGdyZWVjZXxlbnwwfHwwfHx8MA%3D%3D")  
-    d3 = Destination(name="Diani Beach", country="Kenya", description = "A beautiful white-sand beach with clear waters, perfect for snorkeling and diving.",image_url="https://images.unsplash.com/photo-1664093671658-a2aac3a344a9?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlhbmklMjBiZWFjaHxlbnwwfHwwfHx8MA%3D%3D")
-    d4 = Destination(name="Machu Picchu", country="Peru", description = "An ancient Incan city nestled in the Andes mountains, known for its archaeological significance.",image_url="https://images.unsplash.com/photo-1703568092973-4192b759ed00?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjaHUlMjBwaWNjaHV8ZW58MHx8MHx8fDA%")
-    d5 = Destination(name="Great Wall of China", country="china",description = "An ancient world wonder, stretching over 13,000 miles with breathtaking views.", image_url="https://images.unsplash.com/photo-1653966138964-112d0b40833e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JlYXR3YWxsb2ZjaGluYXxlbnwwfHwwfHx8MA%3D%3D")
-    d6 = Destination(name="Mount Kenya" , country="Kenya", description = "Africa's second-highest peak, offering scenic trekking routes and stunning views.",image_url="https://images.unsplash.com/photo-1658823201653-75f1ff511d02?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnQlMjBrZW55YXxlbnwwfHwwfHx8MA%3D%3D")
-    d7 = Destination(name="Sydney Opera House", country="Australia",description = "A world-renowned architectural marvel, located in the Sydney Harbour.", image_url="https://plus.unsplash.com/premium_photo-1697730221799-f2aa87ab2c5d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3lkbmV5JTIwb3BlcmElMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D")
-    d8 = Destination(name="Amboseli National Park", country="Kenya",description = "Known for its large elephant herds and breathtaking views of Mount Kilimanjaro.", image_url="https://plus.unsplash.com/premium_photo-1661842568067-14ff7610f657?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1ib3NlbGklMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D")
-    d9 = Destination(name="Eiffel Tower", country="France", description = "An iconic symbol of Paris, offering stunning views of the city from its observation decks.", image_url="https://plus.unsplash.com/premium_photo-1661963064037-cfcf2e10db2d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWlmZmVsJTIwdG93ZXJ8ZW58MHx8MHx8fDA%3D")
-    d10 = Destination(name="Lamu Island", country="kenya" ,description = "A UNESCO World Heritage Site with rich Swahili culture and historic architecture.", image_url="https://plus.unsplash.com/premium_photo-1673292359580-6debf0432b73?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFtdSUyMGlzbGFuZHxlbnwwfHwwfHx8MA%3D%3D")
-    d11 = Destination(name="Grand Canyon", country= "United States",description = "A natural wonder, known for its immense size and colorful landscape carved by the Colorado River.", image_url="https://plus.unsplash.com/premium_photo-1669050701110-a5eb879f1b6a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhbmQlMjBjYW55b258ZW58MHx8MHx8fDA%3D")
-    d12 = Destination(name="Taj Mahal", country="India",description = "A UNESCO World Heritage Site and symbol of love, known for its stunning white marble architecture.", image_url="https://plus.unsplash.com/premium_photo-1661885523029-fc960a2bb4f3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGFqJTIwbWFoYWx8ZW58MHx8MHx8fDA%3D")
-    d13 = Destination(name="Victoria Falls", country="Zimbabwe/Zambia",description = "One of the largest and most famous waterfalls in the world, located on the Zambezi River.", image_url="https://images.unsplash.com/photo-1678714001094-ba90abd57fec?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmljdG9yaWElMjBmYWxsc3xlbnwwfHwwfHx8MA%3D%3D")
-    d14 = Destination(name="Pyramids of Giza", country="Egypt",description = "Ancient wonders of the world, located near Cairo, known for their historical significance and grandeur.", image_url="https://plus.unsplash.com/premium_photo-1661891622579-bee76e28c304?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHlyYW1pZHMlMjBvZiUyMGdpemF8ZW58MHx8MHx8fDA%3D")
-    d15 = Destination(name="Banff National Park", country="Canada", description = "A beautiful national park in the Canadian Rockies, known for its stunning lakes, mountains, and wildlife.",image_url="https://images.unsplash.com/photo-1564846930470-4b034d717347?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFuZmYlMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D")
-    d16 = Destination(name="Lake Nakuru National Park", country="Kenya", description = "Famous for its flamingo population and diverse bird species in a beautiful lakeside setting.",image_url="https://plus.unsplash.com/premium_photo-1661826903386-4d5f7471152d?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFrZSUyMG5ha3VydSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D")
-    d17 = Destination(name="Samburu National Reserve", country="Kenya",description = "Home to unique wildlife species like the Grevy's zebra, reticulated giraffe, and Somali ostrich.", image_url="https://plus.unsplash.com/premium_photo-1666756340142-3523bd857e35?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2FtYnVydSUyMG5hdGlvbmFsJTIwcmVzZXJ2ZXxlbnwwfHwwfHx8MA%3D%3D")
-    d18 = Destination(name="Hell's Gate National Park", country="Kenya", description = "Offers hiking and rock climbing opportunities, along with geothermal features like hot springs.",image_url="https://p lus.unsplash.com/premium_photo-1664115701437-2bd5849c2793?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGVsbCdzJTIwZ2F0ZSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D")
-    d19 = Destination(name="Tsavo National Park", country="Kenya",description = "One of the largest national parks in the world, known for its red elephants and diverse landscapes", image_url="https://plus.unsplash.com/premium_photo-1664303575598-026ebb947a96?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHNhdm8lMjBuYXRpb25hbCUyMHBhcmt8ZW58MHx8MHx8fDA%3D")
-    d20 = Destination(name="Nairobi National Park", country="Kenya",description = "A unique park located just outside Nairobi, home to rhinos, lions, and giraffes, with the city skyline in the background.", image_url="https://plus.unsplash.com/premium_photo-1697729856847-ae499843242f?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmFpcm9iaSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D")
-    
-    
-    
-    
-    
-    
-    db.session.add_all([d1 , d2 , d3 , d4 , d5 , d6 , d7 , d8 , d9 , d10 , d11 , d12 , d13 , d14 , d15 , d16 , d17 , d18 , d19 , d20])   
-    db.session.commit() 
-    
-    
-    print("Creating Bookings ...")  
-    b1=Booking(user=u1, destination=d1,booking_date=datetime(2024,10,20))
-    b2=Booking(user=u2, destination=d2,booking_date=datetime(2024,10,22))
-    b3=Booking(user=u3, destination=d3,booking_date=datetime(2024,10,23))
-    b4=Booking(user=u4, destination=d4,booking_date=datetime(2024,10,24))
-    b5=Booking(user=u5, destination=d5,booking_date=datetime(2024,10,25))
-    
-    
-    db.session.add_all( [b1 , b2 , b3 , b4 , b5 ])
+
+def create_destinations():
+    """Creates random destinations."""
+    destinations = []
+    for _ in range(5):  # Create 5 fake destinations
+        destination = Destination(
+            name=fake.city(),
+            country=fake.country(),
+            description=fake.paragraph(),
+            image_url=fake.image_url()
+        )
+        destinations.append(destination)
+    db.session.add_all(destinations)
     db.session.commit()
-    
-    print ("seeding done...!")
-    
-   
+
+def create_bookings():
+    """Creates random bookings for users and destinations."""
+    bookings = []
+    users = User.query.all()
+    destinations = Destination.query.all()
+
+    for _ in range(15):  # Create 15 fake bookings
+        booking = Booking(
+            user_id=fake.random_element(users).id,
+            destination_id=fake.random_element(destinations).id,
+            booking_date=fake.date_this_year()
+        )
+        bookings.append(booking)
+    db.session.add_all(bookings)
+    db.session.commit()
+
+def create_destination_bookings():
+    """Creates many-to-many relationship entries in DestinationBooking."""
+    destination_bookings = []
+    bookings = Booking.query.all()
+    destinations = Destination.query.all()
+
+    for booking in bookings:
+        destination = fake.random_element(destinations)
+        destination_booking = DestinationBooking(
+            booking_id=booking.id,
+            destination_id=destination.id
+        )
+        destination_bookings.append(destination_booking)
+    db.session.add_all(destination_bookings)
+    db.session.commit()
+
+def run_seed():
+    """Run all seeding functions inside Flask app context."""
+    with app.app_context():
+        create_users()
+        create_destinations()
+        create_bookings()
+        create_destination_bookings()
+
+        print("Seeding completed.")
+
+if __name__ == "__main__":
+    run_seed()

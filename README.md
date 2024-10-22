@@ -65,7 +65,7 @@ A Travel Wishlist can have many Destinations.
 Each Destination can be associated with multiple Users.
 
 Run the migrations and seed the database:
-flask db revision --autogenerate -m 'messege'
+flask db revision --autogenerate -m 'initial migration'
 flask db upgrade head
 python server/seed.py
 
@@ -81,105 +81,129 @@ Routes
 Set up the following routes. Make sure to return JSON data in the format
 specified along with the appropriate HTTP verb.
 
-1. GET /wishlists
-Return JSON data in the format below:
+## API Endpoints
 
-[
-  {
-    "id": 1,
-    "title": "Maasai Mara National Reserve",
-    "destinations": [
-      {
-        "id": 1,
-        "name": "Santorini",
-        "wishlist_id": 1
-      },
-      {
-        "id": 2,
-        "name": "Diani Beach",
-        "wishlist_id": 1
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Machu Picchu",
-    "destinations": [
-      {
-        "id": 3,
-        "name": "Great Wall of China",
-        "wishlist_id": 2
-      }
-    ]
-  }
-]
-2. GET /wishlists/int:id
-If the wishlist exists, return JSON data in the format below:
+### Destinations
 
-{
-  "id": 1,
-  "title": "Mount Kenya",
-  "destinations": [
-    {
-      "id": 1,
-      "name": "Sydney Opera House",
-      "wishlist_id": 1
-    },
-    {
-      "id": 2,
-      "name": "Amboseli National Park",
-      "wishlist_id": 1
-    }
-  ]
-}
-If the wishlist does not exist, return the following JSON data, along with the appropriate HTTP status code:
-{
-  "error": "Wishlist not found"
-}
+1. **GET /destinations**
+   - Retrieves a list of all destinations.
+   - **Response:**
+     ```json
+     [
+       {
+         "id": 1,
+         "name": "Santorini",
+         "country": "Greece",
+         
+       },
+       ...
+     ]
+     ```
 
-3. POST /wishlists
-Create a new wishlist. The request body should be in the format:
-{
-  "title": "Lamu Island"
-}
+2. **GET /destinations/<int:id>**
+   - Retrieves a specific destination by its ID.
+   - **Response (Success):**
+     ```json
+     {
+       "id": 1,
+       "name": "Santorini",
+       "country": "Greece",
+       
+     }
+     ```
+   - **Response (Error):**
+     ```json
+     {
+       "error": "Destination not found"
+     }
+     ```
 
-If the wishlist is created successfully, return JSON data:
+3. **DELETE /destinations/<int:id>**
+   - Deletes a destination by its ID.
+   - **Response (Success):**
+     ```json
+     {
+       "message": "Destination deleted successfully"
+     }
+     ```
+   - **Response (Error):**
+     ```json
+     {
+       "error": "Destination not found"
+     }
+     ```
 
-{
-  "id": 3,
-  "title": "Lamu Island",
-  "destinations": []
-}
+### Attractions
 
-If the wishlist is not created successfully due to a validation error, return the following JSON data, along with the appropriate HTTP status code:
-{
-  "error": "Title is required and must be 100 characters or less."
-}
+4. **POST /attractions**
+   - Creates a new attraction.
+   - **Request Body:**
+     ```json
+     {
+       "description": "Description of the attraction"
+     }
+     ```
+   - **Response (Success):**
+     ```json
+     {
+       "id": 1,
+       "description": "Description of the attraction"
+     }
+     ```
+   - **Response (Error):**
+     ```json
+     {
+       "error": "Error message"
+     }
+     ```
 
-4. POST /destinations
-This route should create a new destination associated with an existing wishlist. The request body should be in the format:
-{
-  "name": "Victoria Falls",
-  "wishlist_id": 1
-}
+### Destination Attractions
 
-If the destination is created successfully, return JSON data:
+5. **POST /destination_attractions**
+   - Links a destination to an attraction.
+   - **Request Body:**
+     ```json
+     {
+       "destination_id": 1,
+       "attraction_id": 2
+     }
+     ```
+   - **Response (Success):**
+     ```json
+     {
+       "id": 1,
+       "destination_id": 1,
+       "attraction_id": 2
+     }
+     ```
+   - **Response (Error):**
+     ```json
+     {
+       "error": "Validation error"
+     }
+     ```
 
-{
-  "id": 4,
-  "name": "Victoria Falls",
-  "wishlist_id": 1
-}
-If the destination is not created successfully due to a validation error, return the following JSON data, along with the appropriate HTTP status code:
-{
-  "error": "Destination name is required and must be 100 characters or less."
-}
-DELETE /destinations/int:id
-If the destination exists, return an empty response body along with the appropriate HTTP status code (204 No Content).
+6. **GET /destinations/<int:destination_id>/attractions**
+   - Retrieves all attractions for a specific destination.
+   - **Response (Success):**
+     ```json
+     [
+       {
+         "id": 1,
+         "description": "Description of the attraction"
+       },
+       ...
+     ]
+     ```
+   - **Response (Error):**
+     ```json
+     {
+       "error": "Destination not found"
+     }
+     ```
 
-If the destination does not exist, return the following JSON data, along with the appropriate HTTP status code:
+---
 
-{
-  "error": "Destination not found"
-}
-
+### Notes
+- Ensure to use the appropriate HTTP methods (GET, POST, DELETE) for each endpoint.
+- All requests should return JSON formatted data as specified.

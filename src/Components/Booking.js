@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
-
+import { useLocation } from "react-router-dom";
 
 function BookingPage() {
-  function handleOnBook(){
-    alert("Successfully Booked!!")
-  }
+  const location = useLocation();
+  const destination = location.state?.destination;
+
+  const [bookings, setBookings] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    date: "",
+    time: "",
+    notes: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleBook = (e) => {
+    e.preventDefault();
+    setBookings([...bookings, { ...formData, destination }]);
+    alert("Successfully Booked!");
+    setFormData({ name: "", email: "", date: "", time: "", notes: "" });
+  };
+
+  const handleDelete = (index) => {
+    const updatedBookings = bookings.filter((_, i) => i !== index);
+    setBookings(updatedBookings);
+  };
+
   return (
     <div className="booking">
       <>
@@ -13,101 +39,70 @@ function BookingPage() {
         <div className="container mx-auto p-6">
           <h1 className="text-3xl font-bold mb-4">Book Your Appointment</h1>
 
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <form>
-              <div className="mb-0">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-0"
-                  htmlFor="name"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="John Doe"
-                  className="namebox"
-                  required
-                />
-              </div>
+          {destination && (
+            <div>
+              <h2>Destination: {destination.name}</h2>
+              <p>Country: {destination.country}</p>
+              <p>Description: {destination.notes}</p>
+            </div>
+          )}
 
-              <div className="mb-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-1"
-                  htmlFor="email"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="example@example.com"
-                  className="emailbox"
-                  required
-                />
-              </div>
+          <form onSubmit={handleBook}>
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="time"
+              name="time"
+              value={formData.time}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              placeholder="Additional Notes"
+              name="notes"
+              value={formData.notes}
+              onChange={handleChange}
+            />
+            <button type="submit">Book Now</button>
+          </form>
 
-              <div className="mb-8">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-8"
-                  htmlFor="date"
-                >
-                  Date
-                </label>
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  className="datebox"
-                  required
-                />
-              </div>
-
-              <div className="mb-7">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-7"
-                  htmlFor="time"
-                >
-                  Time
-                </label>
-                <input
-                  type="time"
-                  id="time"
-                  name="time"
-                  className="timebox"
-                  required
-                />
-              </div>
-
-              <div className="mb-9">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-9"
-                  htmlFor="message"
-                >
-                  Additional Notes
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Any additional information..."
-                  className="notesbox"
-                ></textarea>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  onClick={handleOnBook}
-                >
-                  Book Now
-                </button>
-              </div>
-            </form>
-          </div>
+          <h2 className="text-2xl mt-4">Your Bookings</h2>
+          <ul>
+            {bookings.map((booking, index) => (
+              <li key={index}>
+                <p>
+                  <strong>Destination:</strong> {booking.destination.name}{" "}
+                  <br />
+                  <strong>Name:</strong> {booking.name} <br />
+                  <strong>Date:</strong> {booking.date} <br />
+                  <strong>Time:</strong> {booking.time} <br />
+                  <strong>Notes:</strong> {booking.notes} <br />
+                  <button onClick={() => handleDelete(index)}>Delete</button>
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </>
     </div>

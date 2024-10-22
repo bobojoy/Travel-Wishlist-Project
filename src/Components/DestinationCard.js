@@ -16,6 +16,7 @@ const DestinationCard = ({ destination, isSelected, onClick }) => {
         <div className="detail">
           <p>Country: {destination.country}</p>
           <p>Description: {destination.notes}</p>
+          <p>{destination.name}</p>
           <button onClick={handleBookNow}>Book Now</button>
         </div>
       )}

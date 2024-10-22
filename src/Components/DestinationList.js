@@ -7,10 +7,10 @@ const DestinationList = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/destinations")
-      .then((res) => res.json())
-      .then((data) => setDestinations(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    fetch('https://travel-wishlist-project-backend.onrender.com/destinations')
+			.then((res) => res.json())
+			.then((data) => setDestinations(data))
+			.catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   const handleCardClick = (id) => {
@@ -24,9 +24,14 @@ const DestinationList = () => {
           key={des.id}
           destination={des}
           isSelected={selectedId === des.id}
+         
           onClick={() => handleCardClick(des.id)}
         />
-      ))}
+        
+      ))
+      
+      }
+       
     </div>
   );
 };

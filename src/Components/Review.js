@@ -16,7 +16,7 @@ function Review() {
         <header>
           <NavBar />
         </header>
-        <main>
+        <main className="main-review">
           <div className="container mx-auto p-6">
             <h2 className="italic text bg-gray-800 text-2xl font-bold mb-4">
               Leave a Review

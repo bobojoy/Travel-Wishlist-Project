@@ -36,7 +36,7 @@ function BookingPage() {
     <div className="booking">
       <>
         <NavBar />
-        <div className="container mx-auto p-6">
+        <div className="booking-container">
           <h1 className="text-3xl font-bold mb-4">Book Your Appointment</h1>
 
           {destination && (
@@ -56,14 +56,20 @@ function BookingPage() {
               onChange={handleChange}
               required
             />
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+            <div className='Name'>
+					{/* <label htmlFor='name'>Name:</label> */}
+					<input
+						className='input'
+						type='text'
+						placeholder='Enter email address ...'
+						id='name'
+						name='email'
+						value={formData.email}
+						onChange={handleChange}
+						required
+					/>
+				</div>
+        <div className="Name">
             <input
               type="date"
               name="date"
@@ -71,6 +77,8 @@ function BookingPage() {
               onChange={handleChange}
               required
             />
+            </div>
+            <div className="Name">
             <input
               type="time"
               name="time"
@@ -78,6 +86,7 @@ function BookingPage() {
               onChange={handleChange}
               required
             />
+            </div>
             <textarea
               placeholder="Additional Notes"
               name="notes"

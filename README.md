@@ -65,7 +65,7 @@ A Travel Wishlist can have many Destinations.
 Each Destination can be associated with multiple Users.
 
 Run the migrations and seed the database:
-flask db revision --autogenerate -m 'initial migration'
+flask db migrate -m "Initial migration." 
 flask db upgrade head
 python server/seed.py
 

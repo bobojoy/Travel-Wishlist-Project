@@ -13,7 +13,8 @@ You can check your API functionality through one of the following methods:
 2. **Running Tests with Pytest**
    - The project includes tests that can be run using pytest. To execute the tests, run the following command in your terminal:
      ```bash
-     pytest 
+     pytest -x
+
      ```
    - This will run all the tests and stop at the first failure, providing feedback on your API functionality.
 

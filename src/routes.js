@@ -1,9 +1,10 @@
 import React from "react";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Components/Home";
-import Booking from "./Components/Booking"; // Keep it as Booking if the file is Booking.js
+import Booking from "./Components/Booking"; 
 import Contact from "./Components/Contact";
 import Review from "./Components/Review";
+import SignIn from "./Components/SignIn"; 
 
 const routes = [
   {
@@ -12,7 +13,7 @@ const routes = [
   },
   {
     path: "/booking",
-    element: <Booking />, // Use the existing Booking component
+    element: <Booking />, 
   },
   {
     path: "/contact",
@@ -22,6 +23,10 @@ const routes = [
     path: "/review",
     element: <Review />,
   },
+  {
+    path: "/signin",
+    element: <SignIn />,
+  }
 ];
 
 export default routes;

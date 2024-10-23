@@ -7,7 +7,7 @@ const DestinationList = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
-    fetch('https://travel-wishlist-project-backend.onrender.com/destinations')
+    fetch('/destinations')
 			.then((res) => res.json())
 			.then((data) => setDestinations(data))
 			.catch((error) => console.error('Error fetching data:', error));

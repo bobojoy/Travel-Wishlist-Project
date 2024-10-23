@@ -27,7 +27,7 @@ const FormComponent = () => {
 
 		try {
 			const response = await axios.post(
-				'https://travel-wishlist-project-backend.onrender.com/destinations',
+				'/destinations',
 				formData
 			);
 			setDestinations([...destinations, response.data]);
@@ -36,8 +36,8 @@ const FormComponent = () => {
 			setFormData({
 				name: '',
 				country: '',
-				notes: '',
-				imageUrl: '',
+				description: '',
+				image_url: '',
 			});
 		} catch (err) {
 			setError('Failed to add entry.');
@@ -48,7 +48,7 @@ const FormComponent = () => {
 	const handleDelete = async (id) => {
 		try {
 			await axios.delete(
-				`https://travel-wishlist-project-backend.onrender.com/destination${id}`
+				`/destination${id}`
 			);
 			setDestinations(
 				destinations.filter((destination) => destination.id !== id)

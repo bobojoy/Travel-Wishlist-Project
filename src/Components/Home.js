@@ -10,6 +10,7 @@ import Signup from './Signup';
 
 function Home() {
 	const [showForm, setShowForm] = useState(false);
+	const [user, setUser] = useState(null); // Add user state
 
 	const handleVideoClick = (e) => {
 		e.preventDefault(); // Prevent any default action
@@ -38,7 +39,7 @@ function Home() {
 				{showForm && <FormComponent />}
 				<h1 className='list'>Existing Destinations</h1>
 				<DestinationList />
-				<Login />
+				<Login setUser={setUser} /> {/* Pass setUser to Login */}
 				<Signup />
 			</main>
 			<footer className='bg-gray-200 py-footer-padding text-center'>

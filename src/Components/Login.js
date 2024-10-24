@@ -50,10 +50,15 @@ function Login({ setUser }) {
 					placeholder="Enter password"
 					aria-label="Password"
 				/>
-				<button type="submit" id="login-login-button">Log in</button>
+
+				
+				<button type="submit" id="login-login-button" >Log in</button>
 				<button type="button" onClick={() => navigate('/signup')} id="signup-button">Sign up</button>
 				<button type="button" onClick={() => navigate('/')}>X</button>
 				{error && <p style={{ color: 'red', fontSize: 'small' }}>{error}</p>}
+
+
+				
 			</form>
 		</div>
 	);

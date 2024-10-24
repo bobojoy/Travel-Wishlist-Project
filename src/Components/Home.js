@@ -6,7 +6,8 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Login from './Login';
-import Signup from './Signup';
+// import SignIn from './SignIn';
+
 
 function Home() {
 	const [showForm, setShowForm] = useState(false);
@@ -39,8 +40,9 @@ function Home() {
 				{showForm && <FormComponent />}
 				<h1 className='list'>Existing Destinations</h1>
 				<DestinationList />
-				<Login setUser={setUser} /> {/* Pass setUser to Login */}
-				<Signup />
+				{/* <Login setUser={setUser} /> Pass setUser to Login */}
+				{/* <Signup /> */}
+				{/* <SignIn/> */}
 			</main>
 			<footer className='bg-gray-200 py-footer-padding text-center'>
 				<div className='social-media'>

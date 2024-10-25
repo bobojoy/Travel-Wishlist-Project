@@ -22,7 +22,18 @@ function NavBar() {
       
       
       <nav className="nav">
-        <NavLink className="NAV" to="/">
+
+      <header>
+      <a href="#" id="textlogo">WonderAdventures</a>
+      <ul class="navbar" >
+       <NavLink to="/"> <li><a href="#home">Home</a></li></NavLink> 
+       <NavLink to="/booking"> <li><a href="#about">Booking</a></li></NavLink>
+       <NavLink to="/contact"> <li><a href="#gamesdiv">Contact</a></li></NavLink>
+        <NavLink to="/review"><li><a href="#contact">Review</a></li></NavLink>
+      </ul>
+      
+    </header>
+        {/* <NavLink className="NAV" to="/">
           Home
         </NavLink>
         <NavLink className="NAV" to="/booking">
@@ -33,7 +44,7 @@ function NavBar() {
         </NavLink>
         <NavLink className="NAV" to="/review">
           Review
-        </NavLink>
+        </NavLink> */}
         {/* <NavLink className="NAV" to="/signin">
           Sign In
         </NavLink>

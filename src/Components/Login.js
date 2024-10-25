@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../App.css';
+import '../login.css';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ setUser }) {
+function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(null);
@@ -18,8 +18,8 @@ function Login({ setUser }) {
 			body: JSON.stringify({ email, password }),
 		}).then((r) => {
 			if (r.ok) {
-				r.json().then((user) => {
-					setUser(user);
+				r.json().then(() => {
+					// setUser();
 					setTimeout(() => {
 						navigate('/'); // Use navigate for consistency
 					}, 1000);
@@ -50,6 +50,7 @@ function Login({ setUser }) {
 					placeholder="Enter password"
 					aria-label="Password"
 				/>
+				
 
 				
 				<button type="submit" id="login-login-button" >Log in</button>

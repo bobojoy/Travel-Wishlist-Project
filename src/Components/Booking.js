@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import { useLocation } from "react-router-dom";
 
-function BookingPage() {
+function Booking() {
   const location = useLocation();
   const destination = location.state?.destination;
 
@@ -160,4 +160,4 @@ function BookingPage() {
   );
 }
 
-export default BookingPage;
+export default Booking;

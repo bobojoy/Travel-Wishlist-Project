@@ -15,6 +15,7 @@ You can check your API functionality through one of the following methods:
      ```bash
      pytest -x
 
+
      ```
    - This will run all the tests and stop at the first failure, providing feedback on your API functionality.
 

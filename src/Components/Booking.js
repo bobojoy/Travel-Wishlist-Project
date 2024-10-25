@@ -10,7 +10,7 @@ function BookingPage() {
     {
       name: "Alice Johnson",
       email: "alice@example.com",
-      date: "2023-10-30",
+      date: "2018-10-30",
       time: "14:00",
       notes: "Looking forward to this trip!",
       destination: { name: "Santorini" },
@@ -18,7 +18,7 @@ function BookingPage() {
     {
       name: "Bob Smith",
       email: "bob@example.com",
-      date: "2023-11-01",
+      date: "2019-1-01",
       time: "10:00",
       notes: "",
       destination: { name: "Victoria Falls" },
@@ -26,7 +26,7 @@ function BookingPage() {
     {
       name: "Charlie Brown",
       email: "charlie@example.com",
-      date: "2023-11-05",
+      date: "2020-8-05",
       time: "09:00",
       notes: "Special requests for vegetarian meals.",
       destination: { name: "Nairobi National Park" },
@@ -34,7 +34,7 @@ function BookingPage() {
     {
       name: "Daisy Adams",
       email: "daisy@example.com",
-      date: "2023-11-10",
+      date: "2022-4-10",
       time: "11:30",
       notes: "",
       destination: { name: "Eiffel Tower" },

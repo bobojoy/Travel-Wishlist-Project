@@ -6,7 +6,50 @@ function BookingPage() {
   const location = useLocation();
   const destination = location.state?.destination;
 
-  const [bookings, setBookings] = useState([]);
+  const initialBookings = [
+    {
+      name: "Alice Johnson",
+      email: "alice@example.com",
+      date: "2023-10-30",
+      time: "14:00",
+      notes: "Looking forward to this trip!",
+      destination: { name: "Santorini" },
+    },
+    {
+      name: "Bob Smith",
+      email: "bob@example.com",
+      date: "2023-11-01",
+      time: "10:00",
+      notes: "",
+      destination: { name: "Victoria Falls" },
+    },
+    {
+      name: "Charlie Brown",
+      email: "charlie@example.com",
+      date: "2023-11-05",
+      time: "09:00",
+      notes: "Special requests for vegetarian meals.",
+      destination: { name: "Nairobi National Park" },
+    },
+    {
+      name: "Daisy Adams",
+      email: "daisy@example.com",
+      date: "2023-11-10",
+      time: "11:30",
+      notes: "",
+      destination: { name: "Eiffel Tower" },
+    },
+    {
+      name: "Eve Davis",
+      email: "eve@example.com",
+      date: "2023-11-15",
+      time: "15:00",
+      notes: "Need a guide.",
+      destination: { name: "Lamu Island" },
+    },
+  ];
+
+  const [bookings, setBookings] = useState(initialBookings);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,36 +99,35 @@ function BookingPage() {
               onChange={handleChange}
               required
             />
-            <div className='Name'>
-					{/* <label htmlFor='name'>Name:</label> */}
-					<input
-						className='input'
-						type='text'
-						placeholder='Enter email address ...'
-						id='name'
-						name='email'
-						value={formData.email}
-						onChange={handleChange}
-						required
-					/>
-				</div>
-        <div className="Name">
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              required
-            />
+            <div className="Name">
+              <input
+                className="input"
+                type="text"
+                placeholder="Enter email address ..."
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="Name">
-            <input
-              type="time"
-              name="time"
-              value={formData.time}
-              onChange={handleChange}
-              required
-            />
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="Name">
+              <input
+                type="time"
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+              />
             </div>
             <textarea
               placeholder="Additional Notes"

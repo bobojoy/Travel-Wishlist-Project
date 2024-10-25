@@ -1,7 +1,7 @@
 import React from "react";  
 import reportWebVitals from "./reportWebVitals";  
 import Home from "./Components/Home";  
-import Booking from "./Components/Booking";
+//import Booking from "./Components/Booking";
 import Contact from "./Components/Contact";  
 import Review from "./Components/Review";  
 // import SignIn from "./Components/SignIn";  
@@ -14,8 +14,8 @@ const routes = [
   element: <Home />,  
   },  
   {  
-  path: "/booking",  
-  element: <Booking />, 
+  //path: "/booking",  
+ // element: <Booking />, 
   },  
   {  
   path: "/contact",  

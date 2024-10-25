@@ -57,7 +57,7 @@ First, set up the initial database by running the following commands in your ter
 
 ```bash
 export FLASK_APP=server/app.py
-
+flask db init
 flask db upgrade head
 Step 2: Define Model Relationships
 In the file server/models.py, implement the relationships for the Travel Wishlist Project:

@@ -83,129 +83,133 @@ Routes
 Set up the following routes. Make sure to return JSON data in the format
 specified along with the appropriate HTTP verb.
 
+# Travel API
+
+This API provides endpoints to manage travel destinations and their associated attractions.
+
 ## API Endpoints
 
 ### Destinations
 
-1. **GET /destinations**
-   - Retrieves a list of all destinations.
-   - **Response:**
-     ```json
-     [
-       {
-         "id": 1,
-         "name": "Santorini",
-         "country": "Greece",
-         
-       },
-       ...
-     ]
-     ```
+- **Get All Destinations**
+  - `GET /destinations`
+  - **Response:**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Santorini",
+        "country": "Greece"
+      },
+      ...
+    ]
+    ```
 
-2. **GET /destinations/<int:id>**
-   - Retrieves a specific destination by its ID.
-   - **Response (Success):**
-     ```json
-     {
-       "id": 1,
-       "name": "Santorini",
-       "country": "Greece",
-       
-     }
-     ```
-   - **Response (Error):**
-     ```json
-     {
-       "error": "Destination not found"
-     }
-     ```
+- **Get Destination by ID**
+  - `GET /destinations/<int:id>`
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "name": "Santorini",
+      "country": "Greece"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
 
-3. **DELETE /destinations/<int:id>**
-   - Deletes a destination by its ID.
-   - **Response (Success):**
-     ```json
-     {
-       "message": "Destination deleted successfully"
-     }
-     ```
-   - **Response (Error):**
-     ```json
-     {
-       "error": "Destination not found"
-     }
-     ```
+- **Delete Destination**
+  - `DELETE /destinations/<int:id>`
+  - **Response (Success):**
+    ```json
+    {
+      "message": "Destination deleted successfully"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
 
 ### Attractions
 
-4. **POST /attractions**
-   - Creates a new attraction.
-   - **Request Body:**
-     ```json
-     {
-       "description": "Description of the attraction"
-     }
-     ```
-   - **Response (Success):**
-     ```json
-     {
-       "id": 1,
-       "description": "Description of the attraction"
-     }
-     ```
-   - **Response (Error):**
-     ```json
-     {
-       "error": "Error message"
-     }
-     ```
+- **Create Attraction**
+  - `POST /attractions`
+  - **Request Body:**
+    ```json
+    {
+      "description": "Description of the attraction"
+    }
+    ```
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "description": "Description of the attraction"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Error message"
+    }
+    ```
 
 ### Destination Attractions
 
-5. **POST /destination_attractions**
-   - Links a destination to an attraction.
-   - **Request Body:**
-     ```json
-     {
-       "destination_id": 1,
-       "attraction_id": 2
-     }
-     ```
-   - **Response (Success):**
-     ```json
-     {
-       "id": 1,
-       "destination_id": 1,
-       "attraction_id": 2
-     }
-     ```
-   - **Response (Error):**
-     ```json
-     {
-       "error": "Validation error"
-     }
-     ```
+- **Link Destination to Attraction**
+  - `POST /destination_attractions`
+  - **Request Body:**
+    ```json
+    {
+      "destination_id": 1,
+      "attraction_id": 2
+    }
+    ```
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "destination_id": 1,
+      "attraction_id": 2
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Validation error"
+    }
+    ```
 
-6. **GET /destinations/<int:destination_id>/attractions**
-   - Retrieves all attractions for a specific destination.
-   - **Response (Success):**
-     ```json
-     [
-       {
-         "id": 1,
-         "description": "Description of the attraction"
-       },
-       ...
-     ]
-     ```
-   - **Response (Error):**
-     ```json
-     {
-       "error": "Destination not found"
-     }
-     ```
+- **Get Attractions by Destination**
+  - `GET /destinations/<int:destination_id>/attractions`
+  - **Response (Success):**
+    ```json
+    [
+      {
+        "id": 1,
+        "description": "Description of the attraction"
+      },
+      ...
+    ]
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
 
----
-
-### Notes
+## Notes
 - Ensure to use the appropriate HTTP methods (GET, POST, DELETE) for each endpoint.
 - All requests should return JSON formatted data as specified.
+
+## License
+This project is licensed under the MIT License.
+  

@@ -87,7 +87,7 @@ specified along with the appropriate HTTP verb.
 
 This API provides endpoints to manage travel destinations and their associated attractions.
 
-## API Endpoints
+
 
 ### Destinations
 

@@ -1,16 +1,9 @@
-
 import React from "react";
 import NavBar from "./NavBar";
 import phoneLogo from "./phone-logo.jpeg"; 
 import whatsappLogo from "./whatsapp.jpeg";
 import emailLogo from "./email-logo.jpeg"; 
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {
-// 	faFacebook,
-// 	faTwitter,
-// 	faInstagram,
-// } from '@fortawesome/free-brands-svg-icons';
+import '../App.css'
 
 function Contact() {
   return (

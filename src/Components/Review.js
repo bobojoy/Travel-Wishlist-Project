@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
+import '../App.css';
 
 function Review() {
+  const [reviews, setReviews] = useState([]);
+  const [name, setName] = useState("");
+  const [reviewText, setReviewText] = useState("");
   function handleOnSubmit(event) {
     event.preventDefault();
-    alert(
-      "Response submitted successfully. We will respond to you as soon as possible."
-    );
-    prompt("How easy was it to navigate our page?");
+    const newReview = {
+      name,
+      reviewText,
+    };
+    setReviews([...reviews, newReview]);
+    setName("");
+    setReviewText("");
+    alert("Review submitted successfully. Thank you for your  feedback!");
   }
 
   return (
@@ -26,15 +34,15 @@ function Review() {
                 className="w-full p-2 border rounded bg-gray-700"
                 type="text"
                 placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
-              <input
-                className="w-full p-2 border rounded bg-gray-700"
-                type="text"
-                placeholder="Email"
-              />
+            
               <textarea
                 placeholder="Your review"
                 className="w-1/2 p-2 border rounded h-24"
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
               />
               <div>
                 <input
@@ -44,6 +52,17 @@ function Review() {
                 />
               </div>
             </form>
+            <div className="review-div">
+              <h3 className="h3-review">Reviews:</h3>
+              <ul className="ul-review">
+                {reviews.map((review, index) => (
+                  <li key={index} className="li-review">
+                    <p className="p-review">{review.name}</p>
+                    <p>{review.reviewText}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </main>
       </>

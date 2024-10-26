@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import '../App.css'
 
 
 const DestinationCard = ({ destination, isSelected, onClick }) => {

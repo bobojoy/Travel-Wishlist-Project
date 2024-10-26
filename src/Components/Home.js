@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from './NavBar';
 import DestinationList from './DestinationList';
-import FormComponent from './Form';
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram ,faTiktok} from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
 
 function Home() {
-	const [showForm, setShowForm] = useState(false);
-	// const [user, setUser] = useState(null); // Add user state
-
-	const handleVideoClick = (e) => {
-		e.preventDefault(); // Prevent any default action
-		setShowForm((prev) => !prev); // Toggle form visibility
-	};
-
+	
 	return (
 		<div className='Home'>
 			<header className='header'>
@@ -27,7 +19,7 @@ function Home() {
       <div class="about_content">
         <h2 id='about-p'>About us</h2>
         <p id='para'>
-		Welcome to [Your Travel Agency Name], where your travel dreams take flight!
+		Welcome to WonderAdventures, where your travel dreams take flight!
           </p>
           <p id='para'>
 		  We specialize in crafting personalized adventures that inspire and delight.
@@ -43,7 +35,7 @@ function Home() {
 					loop
 					muted
 					className='form-video'
-					onClick={handleVideoClick}
+					
 				>
 					<source
 						src='/travel.mp4'
@@ -58,7 +50,7 @@ function Home() {
 					loop
 					muted
 					className='form-video'
-					onClick={handleVideoClick}
+					
 				>
 					<source
 						src='/safari.mp4'
@@ -84,11 +76,7 @@ function Home() {
 	 
     </div>
 	
-				
-
-
-				{showForm && <FormComponent />}
-				<h1 className='list'>Existing Destinations</h1>
+				<h1 className='list'>Available Destinations</h1>
 				<DestinationList />
 				
 			</main>

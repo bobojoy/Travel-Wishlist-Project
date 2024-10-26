@@ -1,3 +1,8 @@
+body {
+	margin: 0;
+	font-family: 'Arial', sans-serif;
+	background-color: #f0f0f0; /* Light background for contrast */
+  }
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -240,11 +245,13 @@ li button {
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	padding: 16px;
-	margin: 16px;
 	max-width: 300px;
-	background-color: #fff;
-	transition: transform 0.2s;
-	background-color: black;
+	background-color: black;	
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	overflow: hidden; /* Prevent overflow for rounded corners */
+	transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+	margin: 20px; 
+	  
 }
 
 .mb-0 {
@@ -353,14 +360,19 @@ li button {
 
 .card img {
 	width: 100%;
-	height: 300px;
 	border-radius: 8px;
+	height: 200px; /* Fixed height for consistency */
+	object-fit: cover; /* Cover to maintain aspect ratio */
+	  
 }
 
 .card h3 {
 	margin-top: 12px;
 	font-size: 1.5rem;
-	color: wheat;
+	color: rgb(239, 239, 247);
+	margin: 10px; /* Space around the title */
+
+	  
 }
 
 .card p {
@@ -372,6 +384,7 @@ li button {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	margin-left: 70px;
+	
   
 }
 .output {
@@ -382,12 +395,7 @@ li button {
 .text-center {
 	text-align: center;
 }
-/* .navbar {
-	background-color: gray;
-	display: flex;
-	padding: 5px;
-	border-radius: 40px;
-} */
+
 .ADD_DEST {
 	color: rgb(43,85,99);
 	padding-left: 40px;
@@ -399,22 +407,19 @@ li button {
 }
 
 .detail {
-	color: palegoldenrod;
+	padding: 15px; /* Padding around the detail section */
+	background-color: #d4cbcb; /* Light gray background */
+	border-top: 1px solid #e0e0e0; /* Light border above detail */
+	border: black 2px solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-/* .NAV {
-	border-radius: 10px;
-	color: rgb(243, 237, 237);
-	font-size: larger;
-	font-style: italic;
-	font-weight: 800;
-	padding-left: 300px;
-	display: flex;
-} */
-
-/* .NAV:hover {
-	color: black;
-} */
+.detail p {
+	margin: 5px 0; /* Space between paragraphs */
+	color: #2e3333; /* Muted text color */
+  }
 
 .nav {
 	padding: 10px;
@@ -425,6 +430,11 @@ li button {
 .img1 {
 	width: 100px;
 	height: 100px;
+	border-radius: 50px;
+}
+.img2{
+	width: 60px;
+	height: 60px;
 	border-radius: 50px;
 }
 /* For login */
@@ -522,21 +532,23 @@ li button {
 	color: #333;
 	font-size: 18px;
   }
+ 
+
 
 /* my styling   */
 header {
 	position: relative;
 	top: 0;
 	left: 0;
-
 	right: 0;
 	width: 100%;
-	padding: 7px 10px;
+	padding: 10px 1;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background: #1b2142;
 	transition: 0.8s;
+	
   }
   header #textlogo {
 	position: relative;
@@ -544,11 +556,15 @@ header {
 	text-decoration: none;
 	font-size: 1.5em;
 	font-weight: 700;
+	margin-right: 20px; /* Space between logo and navigation */
   }
   header .navbar {
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: space-between; /* Space between logo and nav items */
+	padding: 15px 20px; /* Padding around the navbar */
+	color: white; /* White text color */
+	  
   }
   header ul li {
 	list-style: none;
@@ -567,112 +583,37 @@ header {
 	box-shadow: 0 0 10px peru;
 	transition: 2.5s;
   }
-  header .inputsection #searchbox {
-	padding: 5px;
-	margin: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: #fff;
-	border-radius: 10px;
-  }
-  header .inputsection #searchbox i {
-	font-size: 1.4em;
-	margin: 5px;
-	color: #222;
-  }
-  header .inputsection #searchbox input {
-	outline: none;
-	border: none;
-	font-size: 1em;
-	color: #222;
-	padding: 3px;
-  }
   
-  .banner {
-	width: 100%;
-	min-height: 100vh;
-	padding: 0px 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  }
-  .banner .container {
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  }
-  .content h2{
-	  font-family: "Ga Maamli", sans-serif;
-  }
   
-	  
-	  
-  
-  .banner .container .content {
-	width: 100%;
-	height: 100%;
-	padding: 4px;
-  }
-  .banner .container .content h2 {
-	font-size: 2em;
-	color: #fff;
-	letter-spacing: 1px;
-	margin-left: 100px;
-  }
-  .banner .container .content p {
-	font-size: 1.5em;
-	color: #dbd9d9;
-	letter-spacing: 1px;
-	font-family: "Oswald", sans-serif;
-  }
   #imagelogo {
 	height: 50px;
 	width: 50px;
 	border-radius: 30px;
   }
-  .banner {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-  }
-  .banner .container .content a {
-	display: inline-block;
-	padding: 10px 20px;
-	margin: 20px 0;
-	border: 1px solid #1aeeef;
-	text-decoration: none;
-	font-weight: 700;
-	border-radius: 7px;
-	color: #fff;
-	letter-spacing: 1px;
-  }
-  .banner .container .content a:hover {
-	background: #1aeeef;
-	border: none;
-	color-scheme: #050e2d;
-	transition: 2.5s;
-  }
   #imagebanner {
-	width: 100%;
-	border-radius: 100px;
 	padding: 20px;
 	max-width: 600px;
+	width: 50%;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+	  
 	
   }
   #about-p{
-	font-size: 20px;
-	color: gray;
 	font-style: initial;
 	font-weight: 1000;
+	font-size: 2em;
+	color: #34495e; 
+
 	
   }
   #para{
-	font-size: 20px;
-	color: rgb(82, 81, 81);
+	font-size: 20px;;
 	font-style: oblique;
+	margin: 10px 0;
+	line-height: 1.6;
+	color: #7f8c8d; 
+	  
   }
   .about_section {
 	position: relative;
@@ -689,6 +630,67 @@ header {
 	height: 100%;
 	
   }
+  /* Card Container */
+
+  
+  .card:hover {
+	transform: translateY(-5px); /* Lift effect on hover */
+	box-shadow: 0 4px 20px rgba(184, 35, 35, 0.2); /* Stronger shadow on hover */
+  }
+  
+
+  
+  button {
+	background-color: #3498db; /* Blue button color */
+	color: white; /* White text */
+	border: none; /* No border */
+	padding: 10px 15px; /* Padding for the button */
+	border-radius: 4px; /* Slightly rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  button:hover {
+	background-color: #2980b9; /* Darker blue on hover */
+  }
+  /* Navbar Container */
+
+  .nav a {
+	color: white; /* White text for links */
+	text-decoration: none; /* Remove underline */
+	margin: 0 15px; /* Space between links */
+	font-weight: bold; /* Bold text */
+	transition: color 0.3s; /* Smooth color transition */
+  }
+  
+  .nav a:hover {
+	color: #1abc9c; /* Change color on hover */
+  }
+    
+  
+  /* Navbar List */
+  .navbar {
+	list-style: none; /* Remove bullet points */
+	padding: 0; /* Remove default padding */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+	.navbar {
+	  flex-direction: column; /* Stack items on smaller screens */
+	  align-items: flex-start; /* Align items to the left */
+	}
+  
+	.nav {
+	  margin-top: 10px; /* Space between logo and nav items */
+	}
+  
+	.nav a {
+	  margin: 5px 0; /* Space between links when stacked */
+	}
+  }
+  
+  
   .about_section h2 {
 	font-size: 3em;
 	font-weight: 700;
@@ -702,51 +704,18 @@ header {
 	color: #dbd9d9;
 	font-family: "Oswald", sans-serif;
 	font-size: 1.4em;
-	/* background-color: gray; */
+	
   }
-  #games{
-	  font-family: "Signika Negative", sans-serif;
-  }
-  .about_section .about_content a {
-	display: inline-block;
-	padding: 10px 20px;
-	margin: 20px 0;
-	border: 1px solid #1aeeef;
-	text-decoration: none;
-	font-weight: 700;
-	border-radius: 7px;
-	color: #fff;
-	letter-spacing: 1px;
-  }
-  .about_content:hover{
+  
+  
+.about_content:hover{
 	background-color: rgb(214, 206, 206);
 	transition: 5s;
 
   }
-  #gameList {
-	display: flex;
-	color: #fff;
-  }
-  .card {
-	padding: 10px;
-	border: 1px solid rgb(4, 4, 95);
-  }
-  #title {
-	font-weight: 600;
-	font-size: 30px;
-	color: #ec8ff5;
-  }
-  #gamesdiv {
-	display: flex;
-	overflow: auto;
-	padding: 10px;
-  }
-  #gamesdiv::-webkit-scrollbar {
-	width: 0;
-  }
-  #gamesdiv #gameList {
-  }
-  footer {
+
+  
+footer {
 	padding: 10px 100px;
 	background-color: #000b16;
 	text-align: center;
@@ -762,6 +731,7 @@ header {
 	text-decoration: none;
 	font-size: 2em;
 	font-weight: 700;
+
   }
   footer .footerdetails p {
 	color: #dbd9db;
@@ -791,70 +761,37 @@ header {
   footer .footerdetails ul li a i {
 	font-size: 1.5em;
 	color: #fff;
+  } 
+  
+  .about_content {
+	max-width: 600px;
+	padding: 20px;
   }
-  #contact {
-	position: relative;
-	min-height: 40vh;
-	padding: 50px 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background: url(https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139103.jpg);
-	background-size: cover;
-  }
-  .contact_content {
-	text-align: center;
-  }
-  .contact_content h2 {
-	font-size: 36px;
-	font-weight: 500;
-	color: #1d2b5a;
-  }
-  .contact_container {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 28px;
-  }
-  .contact_container .contact_info {
-	width: 50%;
-	display: flex;
-	flex-direction: column;
-  }
-  .contact_container .contact_info .box {
-	padding: 10px;
-	display: flex;
-	align-items: center;
-  }
-  .contact_container .contact_info .box .icon {
-	background: #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-width: 60px;
-	height: 60px;
-	font-size: 22px;
-	border-radius: 45%;
+ 
+  
+  
+ 
+  
+  .footerdetails {
+	margin: 0 auto;
   }
   
-  #favourites {
-	padding: 5px;
-	background: #1aeeef;
-	color: #222;
-	font-size: 15.5px;
-	font-weight: 900;
+ 
+
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+	.about_section {
+	  flex-direction: column; /* Stack elements on smaller screens */
+	  text-align: center; /* Center text */
+	}
+  
+	#imagebanner {
+	  width: 100%; /* Full width for smaller screens */
+	  margin-bottom: 20px; /* Space between video and text */
+	}
   }
-  #games {
-	color: #fff;
-	text-align: center;
-	font-weight: 700;
-	font-size: 35px;
-  }
-  #demo {
-	color: white;
-  }
+  
   @media (max-width: 480px) {
 	header {
 	  flex-direction: column;
@@ -867,30 +804,15 @@ header {
 	  flex-direction: column;
 	  align-items: center;
 	}
-	  .inputsection {
-		margin-top: 10px;
-	  }
-	  .banner {
-		flex-direction: column;
-		text-align: center;
-	  }
 	  
 	  .about_section {
 		text-align: center;
 	  }
-	  #gamesdiv {
-		display: flex;
-		flex-direction: row;
-	  }
-	  .contact_info box {
-		flex-direction: column;
-		align-items: flex-start;
-	  }
+	  
+	 
 	  .footerdetails {
 		  display: flex;
 		  flex-direction: column;
 	  }
 	 
-  
-	
   }

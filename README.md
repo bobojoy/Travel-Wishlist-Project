@@ -83,3 +83,132 @@ Routes
 Set up the following routes. Make sure to return JSON data in the format
 specified along with the appropriate HTTP verb.
 
+# Travel API
+
+This API provides endpoints to manage travel destinations and their associated attractions.
+
+## API Endpoints
+
+### Destinations
+
+- **Get All Destinations**
+  - **Endpoint:** `GET /destinations`
+  - **Response:**
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Santorini",
+        "country": "Greece"
+      },
+      ...
+    ]
+    ```
+
+- **Get Destination by ID**
+  - **Endpoint:** `GET /destinations/<int:id>`
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "name": "Santorini",
+      "country": "Greece"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
+
+- **Delete Destination**
+  - **Endpoint:** `DELETE /destinations/<int:id>`
+  - **Response (Success):**
+    ```json
+    {
+      "message": "Destination deleted successfully"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
+
+### Attractions
+
+- **Create Attraction**
+  - **Endpoint:** `POST /attractions`
+  - **Request Body:**
+    ```json
+    {
+      "description": "Description of the attraction"
+    }
+    ```
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "description": "Description of the attraction"
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Error message"
+    }
+    ```
+
+### Destination Attractions
+
+- **Link Destination to Attraction**
+  - **Endpoint:** `POST /destination_attractions`
+  - **Request Body:**
+    ```json
+    {
+      "destination_id": 1,
+      "attraction_id": 2
+    }
+    ```
+  - **Response (Success):**
+    ```json
+    {
+      "id": 1,
+      "destination_id": 1,
+      "attraction_id": 2
+    }
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Validation error"
+    }
+    ```
+
+- **Get Attractions by Destination**
+  - **Endpoint:** `GET /destinations/<int:destination_id>/attractions`
+  - **Response (Success):**
+    ```json
+    [
+      {
+        "id": 1,
+        "description": "Description of the attraction"
+      },
+      ...
+    ]
+    ```
+  - **Response (Error):**
+    ```json
+    {
+      "error": "Destination not found"
+    }
+    ```
+
+## Notes
+- Ensure to use the appropriate HTTP methods (GET, POST, DELETE) for each endpoint.
+- All requests should return JSON formatted data as specified.
+
+## License
+This project is licensed under the MIT License.

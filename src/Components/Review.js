@@ -57,8 +57,10 @@ function Review() {
               <ul className="ul-review">
                 {reviews.map((review, index) => (
                   <li key={index} className="li-review">
-                    <p className="p-review">{review.name}</p>
-                    <p>{review.reviewText}</p>
+                    <p className="p-review"><strong> Name:   </strong>  {review.name}</p>
+                    <p className="nb , text-black">  <strong>  your review : </strong>   
+                    
+                          {review.reviewText}</p>
                   </li>
                 ))}
               </ul>

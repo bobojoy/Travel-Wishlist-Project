@@ -816,3 +816,112 @@ footer {
 	  }
 	 
   }
+
+
+
+  /* General styles */
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f0f4f8;
+	color: #333;
+  }
+  
+  /* Review component styling */
+  .review {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .main-review {
+	flex: 1;
+	padding: 40px;
+	background-color: #fff;
+  }
+  
+  .container {
+	max-width: 800px;
+	margin: 0 auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+  }
+  
+  h2 {
+	color: #2c3e50;
+	text-align: center;
+	margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  textarea {
+	width: 100%;
+	padding: 10px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: #e8e8e8;
+	color: #000b16;
+  }
+  
+  input[type="text"]:focus,
+  textarea:focus {
+	border-color: #3498db;
+	outline: none;
+  }
+  
+  /* Submit button styles */
+  input[type="submit"] {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 4px;
+	background-color: #3498db;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+	background-color: #2980b9;
+  }
+  
+  .review-div {
+	margin-top: 30px;
+  }
+  
+  .h3-review {
+	font-size: 1.5rem;
+	color: #2c3e50;
+	margin-bottom: 10px;
+  }
+  
+  .ul-review {
+	list-style: none;
+	padding: 0;
+  }
+  
+  .li-review {
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #ecf0f1;
+	border-radius: 4px;
+	color: blanchedalmond;
+  }
+  
+  .li-review :first-child {
+	font-weight: bold;
+	color: #34495e;
+	margin-bottom: 5px;
+  }
+  .nb{
+	color:#34495e;
+	font-weight: bold;
+	margin-bottom: 5px;
+	border-radius: 4px;
+  }
+  

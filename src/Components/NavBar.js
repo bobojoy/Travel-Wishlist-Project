@@ -25,7 +25,7 @@ function NavBar() {
 
       <header>
       <a href="#" id="textlogo">WonderAdventures</a>
-      <ul class="navbar" >
+      <ul className="navbar" >
        <NavLink to="/"> <li><a href="#home">Home</a></li></NavLink> 
        <NavLink to="/booking"> <li><a href="#about">Booking</a></li></NavLink>
        <NavLink to="/contact"> <li><a href="#gamesdiv">Contact</a></li></NavLink>

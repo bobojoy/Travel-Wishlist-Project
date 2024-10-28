@@ -22,7 +22,7 @@ function Booking() {
       email: "bob@example.com",
       date: "2019-01-01",
       time: "10:00",
-      notes: "",
+      notes: "Excited!!!",
       destination: { name: "Victoria Falls", country: "Zimbabwe" },
     },
     {
@@ -38,7 +38,7 @@ function Booking() {
       email: "daisy@example.com",
       date: "2022-04-10",
       time: "11:30",
-      notes: "",
+      notes: "Looking foward to the trip",
       destination: { name: "Eiffel Tower", country: "France" },
     },
     {
